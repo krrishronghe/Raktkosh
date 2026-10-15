@@ -1,19 +1,7 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
+import { BLOOD_GROUPS, BloodGroup, DONOR_STATUSES, DonorStatus } from "@/types";
 
-export const BLOOD_GROUPS = [
-  "A+",
-  "A-",
-  "B+",
-  "B-",
-  "AB+",
-  "AB-",
-  "O+",
-  "O-",
-] as const;
-export type BloodGroup = (typeof BLOOD_GROUPS)[number];
-
-export const DONOR_STATUSES = ["Active", "Inactive", "Deferred"] as const;
-export type DonorStatus = (typeof DONOR_STATUSES)[number];
+export * from "@/types";
 
 export interface IDonor extends Document {
   donorId: string;
@@ -92,7 +80,6 @@ const DonorSchema = new Schema<IDonor>(
   }
 );
 
-// Prevent model recompilation in Next.js development hot-reloading
 const Donor: Model<IDonor> =
   mongoose.models.Donor || mongoose.model<IDonor>("Donor", DonorSchema);
 

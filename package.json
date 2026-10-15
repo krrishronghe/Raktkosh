@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "tsx src/scripts/seed.ts"
+    "seed": "tsx src/scripts/seed.ts",
+    "test:crud": "tsx src/scripts/verify-crud.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

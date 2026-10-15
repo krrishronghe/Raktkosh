@@ -1,13 +1,7 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
-import { BLOOD_GROUPS, BloodGroup } from "./Donor";
+import { BLOOD_GROUPS, BloodGroup, INVENTORY_STATUSES, InventoryStatus } from "@/types";
 
-export const INVENTORY_STATUSES = [
-  "Available",
-  "Reserved",
-  "Expired",
-  "Discarded",
-] as const;
-export type InventoryStatus = (typeof INVENTORY_STATUSES)[number];
+export * from "@/types";
 
 export interface IBloodInventory extends Document {
   inventoryId: string;

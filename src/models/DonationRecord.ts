@@ -1,12 +1,7 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
-import { BLOOD_GROUPS, BloodGroup } from "./Donor";
+import { BLOOD_GROUPS, BloodGroup, DONATION_STATUSES, DonationStatus } from "@/types";
 
-export const DONATION_STATUSES = [
-  "Completed",
-  "Under Screening",
-  "Deferred",
-] as const;
-export type DonationStatus = (typeof DONATION_STATUSES)[number];
+export * from "@/types";
 
 export interface IDonationRecord extends Document {
   donationId: string;

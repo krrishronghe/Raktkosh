@@ -1,18 +1,14 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
-import { BLOOD_GROUPS, BloodGroup } from "./Donor";
+import {
+  BLOOD_GROUPS,
+  BloodGroup,
+  REQUEST_STATUSES,
+  REQUEST_URGENCIES,
+  RequestStatus,
+  RequestUrgency,
+} from "@/types";
 
-export const REQUEST_URGENCIES = ["Normal", "Urgent", "Critical"] as const;
-export type RequestUrgency = (typeof REQUEST_URGENCIES)[number];
-
-export const REQUEST_STATUSES = [
-  "Pending",
-  "Approved",
-  "Partially Fulfilled",
-  "Fulfilled",
-  "Rejected",
-  "Cancelled",
-] as const;
-export type RequestStatus = (typeof REQUEST_STATUSES)[number];
+export * from "@/types";
 
 export interface IBloodRequest extends Document {
   requestId: string;
