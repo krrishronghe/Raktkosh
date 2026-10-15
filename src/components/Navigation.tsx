@@ -182,7 +182,7 @@ export default function Navigation() {
         </div>
 
         {/* Desktop Navigation Sub-bar with 3D Indicator */}
-        <div className="hidden lg:block border-t border-zinc-200/80 dark:border-white/5 bg-zinc-50/70 dark:bg-[#181515]/70 backdrop-blur-md">
+        <div className="hidden lg:block border-t border-zinc-200 dark:border-white/5 bg-slate-50/90 dark:bg-[#181515]/80 backdrop-blur-md">
           <div className="mx-auto flex max-w-7xl space-x-2 px-4 sm:px-6 lg:px-8">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon;
@@ -191,13 +191,13 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative flex items-center space-x-2 px-4 py-3 text-xs font-semibold tracking-wide transition-all duration-200 ${
+                  className={`relative flex items-center space-x-2 px-4 py-3 text-xs font-bold tracking-wide transition-all duration-200 ${
                     isActive
                       ? "text-[#E50914] dark:text-white"
-                      : "text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-[#F5F5F1]"
+                      : "text-slate-600 dark:text-[#9E9A97] hover:text-slate-900 dark:hover:text-[#F5F5F1]"
                   }`}
                 >
-                  <Icon className={`h-4 w-4 ${isActive ? "text-[#E50914]" : "text-zinc-400 dark:text-zinc-500"}`} />
+                  <Icon className={`h-4 w-4 ${isActive ? "text-[#E50914]" : "text-slate-400 dark:text-zinc-500"}`} />
                   <span>{item.label}</span>
                   {isActive && (
                     <span className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-gradient-to-r from-[#E50914] to-[#B81D24] shadow-sm shadow-red-500/50" />
@@ -205,6 +205,29 @@ export default function Navigation() {
                 </Link>
               );
             })}
+          </div>
+        </div>
+
+        {/* Live Clinical Telemetry Broadcast Ticker Strip */}
+        <div className="border-t border-b border-zinc-200/90 dark:border-white/5 bg-gradient-to-r from-red-600/5 via-slate-100/80 to-slate-50/80 dark:from-red-950/30 dark:via-[#161213] dark:to-[#120F10] px-4 py-1.5 text-[11px] font-mono transition-colors">
+          <div className="mx-auto max-w-7xl flex flex-wrap items-center justify-between gap-2">
+            <div className="flex items-center space-x-2 text-slate-800 dark:text-zinc-200">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E50914]"></span>
+              </span>
+              <span className="font-black text-[#E50914] tracking-wider uppercase">CLINICAL ALERT:</span>
+              <span className="font-medium text-slate-700 dark:text-zinc-300">
+                Blood Group B- inventory is at 0 units. Emergency reserve protocol active.
+              </span>
+            </div>
+            <div className="hidden md:flex items-center space-x-4 text-slate-500 dark:text-[#9E9A97]">
+              <span>Vault Ambient: <strong className="text-slate-800 dark:text-white">3.4°C (Normal)</strong></span>
+              <span>•</span>
+              <span>Transfusion Reserves: <strong className="text-slate-800 dark:text-white">68 Units Ready</strong></span>
+              <span>•</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-bold">ACID Compliant</span>
+            </div>
           </div>
         </div>
       </header>

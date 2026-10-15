@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-rakt-red: #E50914;
   --color-rakt-crimson: #B81D24;
@@ -16,40 +18,45 @@
 }
 
 :root {
-  --canvas-bg: #F8F9FA;
+  --canvas-bg: #F8FAFC;
   --canvas-surface: #FFFFFF;
-  --canvas-card: rgba(255, 255, 255, 0.82);
+  --canvas-card: rgba(255, 255, 255, 0.9);
   --canvas-card-solid: #FFFFFF;
-  --canvas-card-hover: #F3F4F6;
-  --text-main: #141212;
-  --text-sub: #6B7280;
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-hover: rgba(229, 9, 20, 0.4);
-  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.07);
+  --canvas-card-hover: #F1F5F9;
+  --text-main: #0F172A;
+  --text-sub: #475569;
+  --border-subtle: rgba(15, 23, 42, 0.09);
+  --border-hover: rgba(229, 9, 20, 0.5);
+  --card-shadow: 0 4px 24px -2px rgba(15, 23, 42, 0.06), 0 2px 8px -2px rgba(15, 23, 42, 0.04);
   --glow-accent: rgba(229, 9, 20, 0.12);
 }
 
 html.dark {
-  --canvas-bg: #141212;
-  --canvas-surface: #1A1717;
-  --canvas-card: rgba(34, 31, 31, 0.78);
-  --canvas-card-solid: #221F1F;
-  --canvas-card-hover: #2A2525;
-  --text-main: #F5F5F1;
-  --text-sub: #9E9A97;
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(229, 9, 20, 0.5);
-  --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
-  --glow-accent: rgba(229, 9, 20, 0.22);
+  --canvas-bg: #0A0809;
+  --canvas-surface: #141011;
+  --canvas-card: rgba(24, 20, 21, 0.82);
+  --canvas-card-solid: #1C1718;
+  --canvas-card-hover: #262022;
+  --text-main: #FFFFFF;
+  --text-sub: #94A3B8;
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-hover: rgba(229, 9, 20, 0.6);
+  --card-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.75);
+  --glow-accent: rgba(229, 9, 20, 0.32);
 }
 
 body {
   background-color: var(--canvas-bg);
+  background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(229, 9, 20, 0.06), transparent 70%);
   color: var(--text-main);
   min-height: 100vh;
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+html.dark body {
+  background-image: radial-gradient(ellipse 85% 55% at 50% -20%, rgba(184, 29, 36, 0.3), transparent 70%);
 }
 
 /* Custom Scrollbars */

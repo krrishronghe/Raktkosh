@@ -388,19 +388,19 @@ export default function RequestsPage() {
 
       {/* Status Counters */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-5 rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 flex items-center justify-between shadow-lg">
+        <div className="p-5 rounded-3xl glass-panel border border-slate-200 dark:border-white/10 flex items-center justify-between shadow-lg">
           <div>
-            <span className="text-[11px] font-bold tracking-wider text-zinc-500 dark:text-[#9E9A97] uppercase">Pending Review</span>
-            <div className="text-3xl font-black text-zinc-900 dark:text-[#F5F5F1] mt-1">{stats.pendingCount}</div>
+            <span className="text-[11px] font-bold tracking-wider text-slate-600 dark:text-[#9E9A97] uppercase">Pending Review</span>
+            <div className="text-3xl font-black text-slate-900 dark:text-[#F5F5F1] mt-1">{stats.pendingCount}</div>
           </div>
           <div className="h-12 w-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
             <Clock className="h-6 w-6 text-amber-500" />
           </div>
         </div>
 
-        <div className="p-5 rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 flex items-center justify-between shadow-lg">
+        <div className="p-5 rounded-3xl glass-panel border border-slate-200 dark:border-white/10 flex items-center justify-between shadow-lg">
           <div>
-            <span className="text-[11px] font-bold tracking-wider text-zinc-500 dark:text-[#9E9A97] uppercase">Critical Urgency</span>
+            <span className="text-[11px] font-bold tracking-wider text-slate-600 dark:text-[#9E9A97] uppercase">Critical Urgency</span>
             <div className="text-3xl font-black text-[#E50914] mt-1">{stats.criticalCount}</div>
           </div>
           <div className="h-12 w-12 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center">
@@ -408,9 +408,9 @@ export default function RequestsPage() {
           </div>
         </div>
 
-        <div className="p-5 rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 flex items-center justify-between shadow-lg">
+        <div className="p-5 rounded-3xl glass-panel border border-slate-200 dark:border-white/10 flex items-center justify-between shadow-lg">
           <div>
-            <span className="text-[11px] font-bold tracking-wider text-zinc-500 dark:text-[#9E9A97] uppercase">Dispatched / Fulfilled</span>
+            <span className="text-[11px] font-bold tracking-wider text-slate-600 dark:text-[#9E9A97] uppercase">Dispatched / Fulfilled</span>
             <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400 mt-1">{stats.fulfilledCount}</div>
           </div>
           <div className="h-12 w-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
@@ -420,16 +420,16 @@ export default function RequestsPage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 p-4 shadow-lg">
+      <div className="rounded-3xl glass-panel border border-slate-200 dark:border-white/10 p-4 shadow-lg">
         <div className="flex flex-col md:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-3.5 h-4 w-4 text-zinc-400 dark:text-[#9E9A97]" />
+            <Search className="absolute left-3.5 top-3.5 h-4 w-4 text-slate-400 dark:text-[#9E9A97]" />
             <input
               type="text"
               placeholder="Search by hospital, patient name, ID (e.g. REQ-3001), or phone..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 pl-10 pr-4 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] placeholder-zinc-400 dark:placeholder-[#9E9A97] focus:outline-none focus:border-[#E50914] transition-colors"
+              className="w-full rounded-2xl bg-white dark:bg-[#181415] border border-slate-300 dark:border-white/10 pl-10 pr-4 py-2.5 text-xs text-slate-900 dark:text-[#F5F5F1] placeholder-slate-400 dark:placeholder-[#9E9A97] focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20 transition-all font-medium"
             />
           </div>
 
@@ -437,7 +437,7 @@ export default function RequestsPage() {
             <select
               value={filterBloodGroup}
               onChange={(e) => setFilterBloodGroup(e.target.value)}
-              className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="rounded-2xl bg-white dark:bg-[#181415] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914]"
             >
               <option value="">All Blood Groups</option>
               {BLOOD_GROUPS.map((bg) => (
@@ -450,7 +450,7 @@ export default function RequestsPage() {
             <select
               value={filterUrgency}
               onChange={(e) => setFilterUrgency(e.target.value)}
-              className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="rounded-2xl bg-white dark:bg-[#181415] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914]"
             >
               <option value="">All Urgencies</option>
               {REQUEST_URGENCIES.map((u) => (
@@ -463,7 +463,7 @@ export default function RequestsPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="rounded-2xl bg-white dark:bg-[#181415] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914]"
             >
               <option value="">All Statuses</option>
               {REQUEST_STATUSES.map((st) => (
@@ -482,7 +482,7 @@ export default function RequestsPage() {
                   setFilterUrgency("");
                   setFilterStatus("");
                 }}
-                className="px-3 py-2.5 rounded-2xl text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:text-[#9E9A97] dark:hover:text-[#F5F5F1] transition-colors"
+                className="px-3 py-2.5 rounded-2xl text-xs font-semibold text-slate-500 hover:text-slate-900 dark:text-[#9E9A97] dark:hover:text-[#F5F5F1] transition-colors"
               >
                 Reset
               </button>
@@ -492,10 +492,10 @@ export default function RequestsPage() {
       </div>
 
       {/* Requests Data Table */}
-      <div className="rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 overflow-hidden shadow-2xl">
+      <div className="rounded-3xl glass-panel border border-slate-200 dark:border-white/10 overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-zinc-800 dark:text-[#F5F5F1]">
-            <thead className="bg-zinc-100/90 dark:bg-[#1A1717] text-[11px] font-bold text-zinc-500 dark:text-[#9E9A97] uppercase tracking-wider border-b border-zinc-200 dark:border-white/10">
+          <table className="w-full text-left text-sm text-slate-800 dark:text-[#F5F5F1]">
+            <thead className="bg-slate-100/90 dark:bg-[#1C1718] text-[11px] font-bold text-slate-700 dark:text-zinc-300 uppercase tracking-wider border-b border-slate-200 dark:border-white/10">
               <tr>
                 <th className="px-6 py-4">Request ID</th>
                 <th className="px-6 py-4">Requester / Hospital</th>
@@ -507,7 +507,7 @@ export default function RequestsPage() {
                 <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-200/80 dark:divide-white/5">
+            <tbody className="divide-y divide-slate-200/80 dark:divide-white/5">
               {loading ? (
                 <tr>
                   <td colSpan={8} className="py-16 text-center text-zinc-500 dark:text-[#9E9A97]">
@@ -638,7 +638,7 @@ export default function RequestsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
                 Contact Number <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -647,18 +647,18 @@ export default function RequestsPage() {
                 value={formData.contactNumber}
                 onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
                 placeholder="+91 22 2456 7890"
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
                 Blood Group <span className="text-[#E50914]">*</span>
               </label>
               <select
                 value={formData.bloodGroup}
                 onChange={(e) => setFormData({ ...formData, bloodGroup: e.target.value as BloodGroup })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914]"
               >
                 {BLOOD_GROUPS.map((bg) => (
                   <option key={bg} value={bg}>
@@ -669,7 +669,7 @@ export default function RequestsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
                 Units Requested <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -678,18 +678,18 @@ export default function RequestsPage() {
                 min={1}
                 value={formData.unitsRequested}
                 onChange={(e) => setFormData({ ...formData, unitsRequested: parseInt(e.target.value, 10) || 1 })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
                 Urgency Level
               </label>
               <select
                 value={formData.urgency}
                 onChange={(e) => setFormData({ ...formData, urgency: e.target.value as RequestUrgency })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914]"
               >
                 {REQUEST_URGENCIES.map((u) => (
                   <option key={u} value={u}>
@@ -700,7 +700,7 @@ export default function RequestsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
                 Required By Date <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -708,27 +708,27 @@ export default function RequestsPage() {
                 required
                 value={formData.requiredByDate}
                 onChange={(e) => setFormData({ ...formData, requiredByDate: e.target.value })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Clinical Notes</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Clinical Notes</label>
             <textarea
               rows={2}
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="e.g. Emergency trauma surgery or scheduled procedure details"
-              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
             />
           </div>
 
-          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsCreateOpen(false)}
-              className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
+              className="px-4 py-2.5 rounded-2xl bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-xs font-semibold text-slate-700 dark:text-white transition-colors"
             >
               Cancel
             </button>
@@ -760,44 +760,44 @@ export default function RequestsPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Requester / Hospital</label>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Requester / Hospital</label>
               <input
                 type="text"
                 required
                 value={formData.patientOrHospitalName}
                 onChange={(e) => setFormData({ ...formData, patientOrHospitalName: e.target.value })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Contact Number</label>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Contact Number</label>
               <input
                 type="text"
                 required
                 value={formData.contactNumber}
                 onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Units Requested</label>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Units Requested</label>
               <input
                 type="number"
                 min={1}
                 value={formData.unitsRequested}
                 onChange={(e) => setFormData({ ...formData, unitsRequested: parseInt(e.target.value, 10) || 1 })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Status</label>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Status</label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as RequestStatus })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914]"
               >
                 {REQUEST_STATUSES.map((st) => (
                   <option key={st} value={st}>
@@ -809,20 +809,20 @@ export default function RequestsPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Notes</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Notes</label>
             <textarea
               rows={2}
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
             />
           </div>
 
-          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsEditOpen(false)}
-              className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
+              className="px-4 py-2.5 rounded-2xl bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-xs font-semibold text-slate-700 dark:text-white transition-colors"
             >
               Cancel
             </button>
@@ -853,19 +853,19 @@ export default function RequestsPage() {
               </div>
             )}
 
-            <div className="p-4 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 space-y-2.5 text-xs">
+            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#141212] border border-slate-200 dark:border-white/10 space-y-2.5 text-xs">
               <div className="flex items-center justify-between">
-                <span className="text-zinc-600 dark:text-[#9E9A97]">Target Blood Group:</span>
+                <span className="text-slate-600 dark:text-[#9E9A97]">Target Blood Group:</span>
                 <BloodGroupBadge bloodGroup={selectedReq.bloodGroup} />
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-zinc-600 dark:text-[#9E9A97]">Requisition Target:</span>
-                <span className="font-bold text-zinc-900 dark:text-[#F5F5F1]">
+                <span className="text-slate-600 dark:text-[#9E9A97]">Requisition Target:</span>
+                <span className="font-bold text-slate-900 dark:text-[#F5F5F1]">
                   {selectedReq.allocatedUnits} of {selectedReq.unitsRequested} units fulfilled
                 </span>
               </div>
-              <div className="flex items-center justify-between pt-2.5 border-t border-zinc-200 dark:border-white/5">
-                <span className="text-zinc-600 dark:text-[#9E9A97]">Available in Cold Storage:</span>
+              <div className="flex items-center justify-between pt-2.5 border-t border-slate-200 dark:border-white/5">
+                <span className="text-slate-600 dark:text-[#9E9A97]">Available in Cold Storage:</span>
                 <span className="font-bold text-emerald-600 dark:text-emerald-400">
                   {selectedReq.availableUnitsInStock ?? "Checking..."} unit(s) ready
                 </span>
@@ -873,7 +873,7 @@ export default function RequestsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
                 Units to Issue in this Batch
               </label>
               <input
@@ -883,18 +883,18 @@ export default function RequestsPage() {
                 max={selectedReq.unitsRequested - selectedReq.allocatedUnits}
                 value={fulfillUnitsInput}
                 onChange={(e) => setFulfillUnitsInput(parseInt(e.target.value, 10) || 1)}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
-              <p className="text-[11px] text-zinc-500 dark:text-[#9E9A97] mt-1.5">
+              <p className="text-[11px] text-slate-500 dark:text-[#9E9A97] mt-1.5">
                 Inventory will automatically decrement the oldest unexpired batches first.
               </p>
             </div>
 
-            <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
+            <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-end space-x-3">
               <button
                 type="button"
                 onClick={() => setIsFulfillOpen(false)}
-                className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
+                className="px-4 py-2.5 rounded-2xl bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-xs font-semibold text-slate-700 dark:text-white transition-colors"
               >
                 Cancel
               </button>

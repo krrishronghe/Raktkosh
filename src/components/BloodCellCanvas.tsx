@@ -219,7 +219,7 @@ export default function BloodCellCanvas({ className = "" }: { className?: string
   return (
     <canvas
       ref={canvasRef}
-      className={`pointer-events-none fixed inset-0 z-0 opacity-40 dark:opacity-45 transition-opacity duration-700 ${className}`}
+      className={`pointer-events-none fixed inset-0 z-0 opacity-20 dark:opacity-45 transition-opacity duration-700 ${className}`}
       aria-hidden="true"
     />
   );

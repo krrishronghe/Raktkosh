@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import BloodCellCanvas from "@/components/BloodCellCanvas";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,8 @@ export default function RootLayout({
         <Navigation />
         {/* Main Content View */}
         <main className="flex-1 pb-16 relative z-10">{children}</main>
+        {/* Clinical Accreditation & System Footer */}
+        <Footer />
       </body>
     </html>
   );

@@ -329,7 +329,7 @@ export default function InventoryPage() {
       </div>
 
       {/* Filters Bar */}
-      <div className="rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 p-4 shadow-lg flex flex-wrap items-center justify-between gap-3">
+      <div className="rounded-3xl glass-panel border border-slate-200 dark:border-white/10 p-4 shadow-lg flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-center gap-2">
           {/* Status Quick Pills */}
           <button
@@ -342,8 +342,8 @@ export default function InventoryPage() {
             }}
             className={`px-3.5 py-2 rounded-xl text-xs font-semibold border transition-all ${
               !filterExpiring && !filterExpired && !filterStatus && !filterBloodGroup
-                ? "bg-zinc-900 text-white dark:bg-white/15 dark:text-white border-transparent"
-                : "border-zinc-200 dark:border-white/5 text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-[#F5F5F1] bg-white/50 dark:bg-transparent"
+                ? "bg-slate-900 text-white dark:bg-white/15 dark:text-white border-transparent"
+                : "border-slate-200 dark:border-white/5 text-slate-700 dark:text-[#9E9A97] hover:text-slate-900 dark:hover:text-[#F5F5F1] bg-white dark:bg-transparent"
             }`}
           >
             All Stock ({inventory.length})
@@ -359,7 +359,7 @@ export default function InventoryPage() {
             className={`px-3.5 py-2 rounded-xl text-xs font-semibold border transition-all ${
               filterStatus === "Available"
                 ? "bg-emerald-500/15 border-emerald-500 text-emerald-700 dark:text-emerald-300"
-                : "border-zinc-200 dark:border-white/5 text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-[#F5F5F1] bg-white/50 dark:bg-transparent"
+                : "border-slate-200 dark:border-white/5 text-slate-700 dark:text-[#9E9A97] hover:text-slate-900 dark:hover:text-[#F5F5F1] bg-white dark:bg-transparent"
             }`}
           >
             Available ({totalUnits} Units)
@@ -375,7 +375,7 @@ export default function InventoryPage() {
             className={`px-3.5 py-2 rounded-xl text-xs font-semibold border transition-all flex items-center space-x-1.5 ${
               filterExpiring
                 ? "bg-amber-500/15 border-amber-500 text-amber-700 dark:text-amber-300"
-                : "border-zinc-200 dark:border-white/5 text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-[#F5F5F1] bg-white/50 dark:bg-transparent"
+                : "border-slate-200 dark:border-white/5 text-slate-700 dark:text-[#9E9A97] hover:text-slate-900 dark:hover:text-[#F5F5F1] bg-white dark:bg-transparent"
             }`}
           >
             <Clock className="h-3 w-3" />
@@ -392,7 +392,7 @@ export default function InventoryPage() {
             className={`px-3.5 py-2 rounded-xl text-xs font-semibold border transition-all flex items-center space-x-1.5 ${
               filterExpired
                 ? "bg-red-500/15 border-red-500 text-red-700 dark:text-red-300"
-                : "border-zinc-200 dark:border-white/5 text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-[#F5F5F1] bg-white/50 dark:bg-transparent"
+                : "border-slate-200 dark:border-white/5 text-slate-700 dark:text-[#9E9A97] hover:text-slate-900 dark:hover:text-[#F5F5F1] bg-white dark:bg-transparent"
             }`}
           >
             <AlertTriangle className="h-3 w-3" />
@@ -408,7 +408,7 @@ export default function InventoryPage() {
               setFilterExpiring(false);
               setFilterExpired(false);
             }}
-            className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2 text-xs font-medium text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+            className="rounded-2xl bg-white dark:bg-[#1A1717] border border-slate-300 dark:border-white/10 px-3.5 py-2 text-xs font-medium text-slate-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
           >
             <option value="">Filter Status</option>
             {INVENTORY_STATUSES.map((st) => (
@@ -421,10 +421,10 @@ export default function InventoryPage() {
       </div>
 
       {/* Inventory Table */}
-      <div className="rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 overflow-hidden shadow-2xl">
+      <div className="rounded-3xl glass-panel border border-slate-200 dark:border-white/10 overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-zinc-800 dark:text-[#F5F5F1]">
-            <thead className="bg-zinc-100/90 dark:bg-[#1A1717] text-[11px] font-bold text-zinc-500 dark:text-[#9E9A97] uppercase tracking-wider border-b border-zinc-200 dark:border-white/10">
+          <table className="w-full text-left text-sm text-slate-800 dark:text-[#F5F5F1]">
+            <thead className="bg-slate-100/90 dark:bg-[#1C1718] text-[11px] font-bold text-slate-700 dark:text-zinc-300 uppercase tracking-wider border-b border-slate-200 dark:border-white/10">
               <tr>
                 <th className="px-6 py-4">Batch ID</th>
                 <th className="px-6 py-4">Blood Group</th>
@@ -436,7 +436,7 @@ export default function InventoryPage() {
                 <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-200/80 dark:divide-white/5">
+            <tbody className="divide-y divide-slate-200/80 dark:divide-white/5">
               {loading ? (
                 <tr>
                   <td colSpan={8} className="py-16 text-center text-zinc-500 dark:text-[#9E9A97]">
@@ -588,7 +588,7 @@ export default function InventoryPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
                 Collection Date <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -601,12 +601,12 @@ export default function InventoryPage() {
                   const newExp = new Date(colTime + 42 * 24 * 60 * 60 * 1000).toISOString().split("T")[0];
                   setFormData({ ...formData, collectionDate: newCol, expiryDate: newExp });
                 }}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
                 Expiry Date (Standard ~42 Days) <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -614,12 +614,12 @@ export default function InventoryPage() {
                 required
                 value={formData.expiryDate}
                 onChange={(e) => setFormData({ ...formData, expiryDate: e.target.value })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
                 Storage Location <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -628,18 +628,18 @@ export default function InventoryPage() {
                 value={formData.storageLocation}
                 onChange={(e) => setFormData({ ...formData, storageLocation: e.target.value })}
                 placeholder="e.g. Cold Vault Alpha - Rack 2"
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">
                 Inventory Status
               </label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as InventoryStatus })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914]"
               >
                 {INVENTORY_STATUSES.map((st) => (
                   <option key={st} value={st}>
@@ -651,21 +651,21 @@ export default function InventoryPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Batch Notes</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Batch Notes</label>
             <input
               type="text"
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="e.g. Routine blood donation drive collection"
-              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium placeholder-slate-400 dark:placeholder-zinc-500 focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
             />
           </div>
 
-          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsAddOpen(false)}
-              className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
+              className="px-4 py-2.5 rounded-2xl bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-xs font-semibold text-slate-700 dark:text-white transition-colors"
             >
               Cancel
             </button>
@@ -712,33 +712,33 @@ export default function InventoryPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Available Units</label>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Available Units</label>
               <input
                 type="number"
                 min={0}
                 value={formData.units}
                 onChange={(e) => setFormData({ ...formData, units: parseInt(e.target.value, 10) || 0 })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Storage Location</label>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Storage Location</label>
               <input
                 type="text"
                 required
                 value={formData.storageLocation}
                 onChange={(e) => setFormData({ ...formData, storageLocation: e.target.value })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Status</label>
+              <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Status</label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as InventoryStatus })}
-                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914]"
               >
                 {INVENTORY_STATUSES.map((st) => (
                   <option key={st} value={st}>
@@ -750,20 +750,20 @@ export default function InventoryPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Notes</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300 mb-1.5">Notes</label>
             <input
               type="text"
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="w-full rounded-2xl bg-white dark:bg-[#141212] border border-slate-300 dark:border-white/10 px-3.5 py-2.5 text-sm text-slate-900 dark:text-[#F5F5F1] font-medium focus:outline-none focus:border-[#E50914] focus:ring-2 focus:ring-red-500/20"
             />
           </div>
 
-          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsEditOpen(false)}
-              className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
+              className="px-4 py-2.5 rounded-2xl bg-slate-100 dark:bg-white/10 hover:bg-slate-200 dark:hover:bg-white/15 text-xs font-semibold text-slate-700 dark:text-white transition-colors"
             >
               Cancel
             </button>
