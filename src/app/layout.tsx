@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import BloodCellCanvas from "@/components/BloodCellCanvas";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Raktkosh — Blood Bank Management System",
+  title: "Raktkosh — 3D Bio-Vault Blood Bank System",
   description:
-    "A centralized, reliable platform for managing blood donors, blood inventory, donations, and blood requests.",
+    "Next-generation database management platform for blood donors, bio-vault inventory, donations, and hospital requisitions.",
 };
 
 export default function RootLayout({
@@ -28,10 +29,15 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full dark`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#141212] text-[#F5F5F1] selection:bg-[#E50914] selection:text-white antialiased">
+      <body className="min-h-full flex flex-col antialiased relative selection:bg-[#E50914] selection:text-white">
+        {/* 3D Interactive Floating Erythrocytes Canvas */}
+        <BloodCellCanvas />
+        {/* Navigation Bar */}
         <Navigation />
-        <main className="flex-1 pb-16">{children}</main>
+        {/* Main Content View */}
+        <main className="flex-1 pb-16 relative z-10">{children}</main>
       </body>
     </html>
   );

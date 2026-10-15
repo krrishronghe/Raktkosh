@@ -304,79 +304,79 @@ export default function DonorsPage() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8 space-y-6">
-      {/* Header & Primary Action */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+    <div className="mx-auto max-w-7xl px-4 pt-6 sm:px-6 lg:px-8 space-y-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-white/10 pb-6">
         <div>
-          <div className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-[#E50914] mb-1">
+          <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#E50914] mb-1">
             <Users className="h-4 w-4" />
-            <span>Donor Registry</span>
+            <span>Donor Registry Terminal</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-[#F5F5F1] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-black text-zinc-900 dark:text-[#F5F5F1] tracking-tight">
             Donor Management
           </h1>
-          <p className="text-sm text-[#9E9A97] mt-1">
-            Create, search, audit, update, and manage verified voluntary blood donors.
+          <p className="text-sm text-zinc-600 dark:text-[#9E9A97] mt-1">
+            Audit, register, search, update, and manage verified voluntary blood donors.
           </p>
         </div>
 
         <button
           onClick={openCreateModal}
-          className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-[#E50914] hover:bg-[#B81D24] text-white text-sm font-semibold shadow-lg shadow-red-900/40 transition-all hover:scale-105"
+          className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#E50914] to-[#B81D24] text-white text-xs font-bold shadow-lg shadow-red-900/30 transition-all hover:scale-105"
         >
           <UserPlus className="h-4 w-4" />
           <span>Register New Donor</span>
         </button>
       </div>
 
-      {/* Action Alerts */}
+      {/* Action Feedback Alerts */}
       {actionSuccess && (
-        <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-sm flex items-center justify-between animate-in fade-in">
-          <span>{actionSuccess}</span>
-          <button onClick={() => setActionSuccess(null)} className="text-emerald-400 hover:text-white">
+        <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-300 text-sm flex items-center justify-between shadow-sm animate-in fade-in">
+          <span className="font-medium">{actionSuccess}</span>
+          <button onClick={() => setActionSuccess(null)} className="text-emerald-500 hover:text-emerald-700">
             &times;
           </button>
         </div>
       )}
       {actionError && !isCreateOpen && !isEditOpen && !isDeleteOpen && (
-        <div className="p-4 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-sm flex items-center justify-between animate-in fade-in">
+        <div className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-300 dark:border-red-500/40 text-red-800 dark:text-red-300 text-sm flex items-center justify-between shadow-sm animate-in fade-in">
           <div className="flex items-center space-x-2">
             <AlertCircle className="h-4 w-4 text-[#E50914]" />
-            <span>{actionError}</span>
+            <span className="font-medium">{actionError}</span>
           </div>
-          <button onClick={() => setActionError(null)} className="text-red-400 hover:text-white">
+          <button onClick={() => setActionError(null)} className="text-red-500 hover:text-red-700">
             &times;
           </button>
         </div>
       )}
 
       {/* Filter and Search Bar */}
-      <div className="rounded-2xl bg-[#221F1F]/80 border border-white/10 p-4">
+      <div className="rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 p-4 shadow-lg">
         <form onSubmit={handleSearchSubmit} className="flex flex-col md:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#9E9A97]" />
+            <Search className="absolute left-3.5 top-3 h-4 w-4 text-zinc-400 dark:text-[#9E9A97]" />
             <input
               type="text"
               placeholder="Search by full name, ID (e.g. DNR-1001), phone, or city..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-xl bg-[#1A1717] border border-white/10 pl-10 pr-4 py-2 text-sm text-[#F5F5F1] placeholder-[#9E9A97] focus:outline-none focus:border-[#E50914] transition-colors"
+              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 pl-10 pr-4 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] placeholder-zinc-400 dark:placeholder-[#9E9A97] focus:outline-none focus:border-[#E50914] transition-colors"
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
             <select
               value={filterBloodGroup}
               onChange={(e) => {
                 setFilterBloodGroup(e.target.value);
                 setPage(1);
               }}
-              className="rounded-xl bg-[#1A1717] border border-white/10 px-3 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             >
               <option value="">All Blood Groups</option>
               {BLOOD_GROUPS.map((bg) => (
                 <option key={bg} value={bg}>
-                  Blood Group: {bg}
+                  Group: {bg}
                 </option>
               ))}
             </select>
@@ -387,7 +387,7 @@ export default function DonorsPage() {
                 setFilterStatus(e.target.value);
                 setPage(1);
               }}
-              className="rounded-xl bg-[#1A1717] border border-white/10 px-3 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             >
               <option value="">All Statuses</option>
               {DONOR_STATUSES.map((st) => (
@@ -399,16 +399,16 @@ export default function DonorsPage() {
 
             <button
               type="submit"
-              className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-sm font-medium text-[#F5F5F1] transition-colors"
+              className="px-4 py-2.5 rounded-2xl bg-zinc-900 dark:bg-white/10 hover:bg-zinc-800 dark:hover:bg-white/15 text-xs font-bold text-white transition-all"
             >
-              Search
+              Filter
             </button>
 
             {(search || filterBloodGroup || filterStatus) && (
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="px-3 py-2 rounded-xl text-xs text-[#9E9A97] hover:text-[#F5F5F1] transition-colors"
+                className="px-3 py-2.5 rounded-2xl text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:text-[#9E9A97] dark:hover:text-[#F5F5F1] transition-colors"
               >
                 Reset
               </button>
@@ -418,10 +418,10 @@ export default function DonorsPage() {
       </div>
 
       {/* Donors Data Table */}
-      <div className="rounded-2xl bg-[#221F1F]/80 border border-white/10 overflow-hidden shadow-xl">
+      <div className="rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-[#F5F5F1]">
-            <thead className="bg-[#1A1717] text-xs font-semibold text-[#9E9A97] uppercase tracking-wider border-b border-white/10">
+          <table className="w-full text-left text-sm text-zinc-800 dark:text-[#F5F5F1]">
+            <thead className="bg-zinc-100/90 dark:bg-[#1A1717] text-[11px] font-bold text-zinc-500 dark:text-[#9E9A97] uppercase tracking-wider border-b border-zinc-200 dark:border-white/10">
               <tr>
                 <th className="px-6 py-4">Donor ID</th>
                 <th className="px-6 py-4">Full Name</th>
@@ -433,24 +433,24 @@ export default function DonorsPage() {
                 <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-zinc-200/80 dark:divide-white/5">
               {loading ? (
                 <tr>
-                  <td colSpan={8} className="py-12 text-center text-[#9E9A97]">
+                  <td colSpan={8} className="py-16 text-center text-zinc-500 dark:text-[#9E9A97]">
                     <div className="flex items-center justify-center space-x-2">
                       <RefreshCw className="h-5 w-5 animate-spin text-[#E50914]" />
-                      <span>Loading donors from MongoDB...</span>
+                      <span className="font-medium">Querying donor records from MongoDB...</span>
                     </div>
                   </td>
                 </tr>
               ) : donors.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="py-12 text-center text-[#9E9A97]">
-                    <p className="text-base font-semibold text-[#F5F5F1]">No donor records found</p>
-                    <p className="text-xs text-[#9E9A97] mt-1">
+                  <td colSpan={8} className="py-16 text-center text-zinc-500 dark:text-[#9E9A97]">
+                    <p className="text-base font-bold text-zinc-900 dark:text-[#F5F5F1]">No donor records found</p>
+                    <p className="text-xs text-zinc-500 dark:text-[#9E9A97] mt-1">
                       {search || filterBloodGroup || filterStatus
                         ? "Try adjusting your search criteria or resetting filters."
-                        : "Register your first donor above to begin."}
+                        : "Register your first voluntary donor above to begin."}
                     </p>
                   </td>
                 </tr>
@@ -458,27 +458,27 @@ export default function DonorsPage() {
                 donors.map((donor) => (
                   <tr
                     key={donor._id}
-                    className="hover:bg-white/[0.02] transition-colors group"
+                    className="hover:bg-zinc-100/60 dark:hover:bg-white/[0.02] transition-colors group"
                   >
-                    <td className="px-6 py-4 font-mono font-medium text-[#E50914]">
+                    <td className="px-6 py-4 font-mono font-bold text-[#E50914]">
                       {donor.donorId}
                     </td>
-                    <td className="px-6 py-4 font-semibold text-[#F5F5F1]">
+                    <td className="px-6 py-4 font-bold text-zinc-900 dark:text-[#F5F5F1]">
                       {donor.fullName}
                     </td>
                     <td className="px-6 py-4">
                       <BloodGroupBadge bloodGroup={donor.bloodGroup} />
                     </td>
-                    <td className="px-6 py-4 text-[#9E9A97]">
+                    <td className="px-6 py-4 text-zinc-600 dark:text-[#9E9A97] text-xs">
                       {donor.age} yrs • {donor.gender}
                     </td>
                     <td className="px-6 py-4">
-                      <div className="flex flex-col text-xs text-[#9E9A97]">
-                        <span className="text-[#F5F5F1]">{donor.contactNumber}</span>
-                        {donor.email && <span>{donor.email}</span>}
+                      <div className="flex flex-col text-xs text-zinc-600 dark:text-[#9E9A97]">
+                        <span className="font-semibold text-zinc-900 dark:text-[#F5F5F1]">{donor.contactNumber}</span>
+                        {donor.email && <span className="text-[11px] truncate max-w-xs">{donor.email}</span>}
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-[#9E9A97]">
+                    <td className="px-6 py-4 text-zinc-600 dark:text-[#9E9A97] text-xs">
                       {donor.city}
                     </td>
                     <td className="px-6 py-4">
@@ -488,21 +488,21 @@ export default function DonorsPage() {
                       <div className="flex items-center justify-end space-x-1.5">
                         <button
                           onClick={() => openDetailModal(donor)}
-                          className="p-1.5 rounded-lg text-[#9E9A97] hover:text-[#F5F5F1] hover:bg-white/5 transition-colors"
-                          title="View Donor Details & History"
+                          className="p-1.5 rounded-lg text-zinc-500 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-[#F5F5F1] hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors"
+                          title="View Profile File"
                         >
                           <Eye className="h-4 w-4" />
                         </button>
                         <button
                           onClick={() => openEditModal(donor)}
-                          className="p-1.5 rounded-lg text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 transition-colors"
+                          className="p-1.5 rounded-lg text-blue-500 hover:text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-500/10 transition-colors"
                           title="Edit Donor Record"
                         >
                           <Edit2 className="h-4 w-4" />
                         </button>
                         <button
                           onClick={() => openDeleteModal(donor)}
-                          className="p-1.5 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
+                          className="p-1.5 rounded-lg text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
                           title="Delete Donor Record"
                         >
                           <Trash2 className="h-4 w-4" />
@@ -518,7 +518,7 @@ export default function DonorsPage() {
 
         {/* Pagination controls */}
         {totalPages > 1 && (
-          <div className="px-6 py-4 border-t border-white/10 bg-[#1A1717] flex items-center justify-between text-xs text-[#9E9A97]">
+          <div className="px-6 py-4 border-t border-zinc-200 dark:border-white/10 bg-zinc-50 dark:bg-[#1A1717] flex items-center justify-between text-xs text-zinc-500 dark:text-[#9E9A97]">
             <span>
               Showing {donors.length} of {totalCount} donors
             </span>
@@ -526,17 +526,17 @@ export default function DonorsPage() {
               <button
                 disabled={page <= 1}
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
-                className="px-3 py-1.5 rounded-lg bg-[#221F1F] border border-white/10 disabled:opacity-40 hover:text-white"
+                className="px-3.5 py-1.5 rounded-xl bg-white dark:bg-[#221F1F] border border-zinc-200 dark:border-white/10 disabled:opacity-40 hover:text-zinc-900 dark:hover:text-white"
               >
                 Previous
               </button>
-              <span className="font-semibold text-[#F5F5F1]">
+              <span className="font-bold text-zinc-900 dark:text-[#F5F5F1]">
                 Page {page} of {totalPages}
               </span>
               <button
                 disabled={page >= totalPages}
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                className="px-3 py-1.5 rounded-lg bg-[#221F1F] border border-white/10 disabled:opacity-40 hover:text-white"
+                className="px-3.5 py-1.5 rounded-xl bg-white dark:bg-[#221F1F] border border-zinc-200 dark:border-white/10 disabled:opacity-40 hover:text-zinc-900 dark:hover:text-white"
               >
                 Next
               </button>
@@ -549,21 +549,21 @@ export default function DonorsPage() {
       <Modal
         isOpen={isCreateOpen}
         onClose={() => setIsCreateOpen(false)}
-        title="Register New Blood Donor"
-        description="Add a verified donor to the persistent MongoDB registry."
+        title="Register Voluntary Blood Donor"
+        description="Verify demographic details and persist into the central MongoDB collection."
         maxWidth="lg"
       >
         <form onSubmit={handleCreateSubmit} className="space-y-4">
           {actionError && (
-            <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-xs">
+            <div className="p-3 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-300 dark:border-red-500/40 text-red-800 dark:text-red-300 text-xs font-medium">
               {actionError}
             </div>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
-                Full Name <span className="text-[#E50914]">*</span>
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">
+                Full Legal Name <span className="text-[#E50914]">*</span>
               </label>
               <input
                 type="text"
@@ -571,18 +571,18 @@ export default function DonorsPage() {
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 placeholder="e.g. Ramesh Patel"
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">
                 Blood Group <span className="text-[#E50914]">*</span>
               </label>
               <select
                 value={formData.bloodGroup}
                 onChange={(e) => setFormData({ ...formData, bloodGroup: e.target.value as BloodGroup })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 {BLOOD_GROUPS.map((bg) => (
                   <option key={bg} value={bg}>
@@ -593,7 +593,7 @@ export default function DonorsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">
                 Age (18 - 65) <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -603,18 +603,18 @@ export default function DonorsPage() {
                 max={65}
                 value={formData.age}
                 onChange={(e) => setFormData({ ...formData, age: parseInt(e.target.value, 10) || 18 })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">
                 Gender
               </label>
               <select
                 value={formData.gender}
                 onChange={(e) => setFormData({ ...formData, gender: e.target.value as "Male" | "Female" | "Other" })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -623,8 +623,8 @@ export default function DonorsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
-                Contact Number <span className="text-[#E50914]">*</span>
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">
+                Contact Phone <span className="text-[#E50914]">*</span>
               </label>
               <input
                 type="text"
@@ -632,12 +632,12 @@ export default function DonorsPage() {
                 value={formData.contactNumber}
                 onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
                 placeholder="+91 98765 43210"
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">
                 Email Address
               </label>
               <input
@@ -645,12 +645,12 @@ export default function DonorsPage() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="donor@example.com"
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">
                 City / Location <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -659,18 +659,18 @@ export default function DonorsPage() {
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                 placeholder="e.g. Mumbai"
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
-                Registration Status
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">
+                Status
               </label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as DonorStatus })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 {DONOR_STATUSES.map((st) => (
                   <option key={st} value={st}>
@@ -681,20 +681,20 @@ export default function DonorsPage() {
             </div>
           </div>
 
-          <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsCreateOpen(false)}
-              className="px-4 py-2 rounded-xl bg-[#141212] border border-white/10 text-xs text-[#9E9A97] hover:text-white"
+              className="px-4 py-2 rounded-xl text-xs font-semibold text-zinc-600 hover:text-zinc-900 dark:text-[#9E9A97] dark:hover:text-white"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 rounded-xl bg-[#E50914] hover:bg-[#B81D24] text-xs font-semibold text-white shadow-lg shadow-red-900/40 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#E50914] to-[#B81D24] text-xs font-bold text-white shadow-lg shadow-red-900/30 disabled:opacity-50"
             >
-              {submitting ? "Saving to MongoDB..." : "Confirm Registration"}
+              {submitting ? "Saving..." : "Confirm Registration"}
             </button>
           </div>
         </form>
@@ -704,35 +704,35 @@ export default function DonorsPage() {
       <Modal
         isOpen={isEditOpen}
         onClose={() => setIsEditOpen(false)}
-        title={`Edit Donor — ${selectedDonor?.donorId}`}
-        description="Update donor demographic information and registration status."
+        title={`Edit Donor File — ${selectedDonor?.donorId}`}
+        description="Modify donor demographics and availability status."
         maxWidth="lg"
       >
         <form onSubmit={handleEditSubmit} className="space-y-4">
           {actionError && (
-            <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-xs">
+            <div className="p-3 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-300 dark:border-red-500/40 text-red-800 dark:text-red-300 text-xs font-medium">
               {actionError}
             </div>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Full Name</label>
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">Full Name</label>
               <input
                 type="text"
                 required
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Blood Group</label>
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">Blood Group</label>
               <select
                 value={formData.bloodGroup}
                 onChange={(e) => setFormData({ ...formData, bloodGroup: e.target.value as BloodGroup })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 {BLOOD_GROUPS.map((bg) => (
                   <option key={bg} value={bg}>
@@ -743,23 +743,23 @@ export default function DonorsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Age</label>
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">Age</label>
               <input
                 type="number"
                 min={18}
                 max={65}
                 value={formData.age}
                 onChange={(e) => setFormData({ ...formData, age: parseInt(e.target.value, 10) || 18 })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Gender</label>
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">Gender</label>
               <select
                 value={formData.gender}
                 onChange={(e) => setFormData({ ...formData, gender: e.target.value as "Male" | "Female" | "Other" })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -768,43 +768,43 @@ export default function DonorsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Contact Number</label>
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">Contact Phone</label>
               <input
                 type="text"
                 required
                 value={formData.contactNumber}
                 onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Email Address</label>
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">Email</label>
               <input
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">City / Location</label>
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">Location / City</label>
               <input
                 type="text"
                 required
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Status</label>
+              <label className="block text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] mb-1">Status</label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as DonorStatus })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-300 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 {DONOR_STATUSES.map((st) => (
                   <option key={st} value={st}>
@@ -815,18 +815,18 @@ export default function DonorsPage() {
             </div>
           </div>
 
-          <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsEditOpen(false)}
-              className="px-4 py-2 rounded-xl bg-[#141212] border border-white/10 text-xs text-[#9E9A97] hover:text-white"
+              className="px-4 py-2 rounded-xl text-xs font-semibold text-zinc-600 hover:text-zinc-900 dark:text-[#9E9A97] dark:hover:text-white"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 rounded-xl bg-[#E50914] hover:bg-[#B81D24] text-xs font-semibold text-white shadow-lg shadow-red-900/40 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#E50914] to-[#B81D24] text-xs font-bold text-white shadow-lg shadow-red-900/30 disabled:opacity-50"
             >
               {submitting ? "Updating..." : "Save Changes"}
             </button>
@@ -834,54 +834,54 @@ export default function DonorsPage() {
         </form>
       </Modal>
 
-      {/* ================= MODAL: DONOR DETAILS & AUDIT ================= */}
+      {/* ================= MODAL: DONOR PROFILE & SESSIONS ================= */}
       <Modal
         isOpen={isDetailOpen}
         onClose={() => setIsDetailOpen(false)}
-        title="Donor Record File"
-        description="Verified demographic profile and donation log from MongoDB."
+        title="Donor Bio-File & History"
+        description="Audited demographic profile and linked donation logs from MongoDB."
         maxWidth="lg"
       >
         {selectedDonorDetail && (
           <div className="space-y-6">
-            <div className="flex items-center justify-between p-4 rounded-xl bg-[#141212] border border-white/10">
+            <div className="flex items-center justify-between p-4 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10">
               <div className="flex items-center space-x-3">
                 <BloodGroupBadge bloodGroup={selectedDonorDetail.bloodGroup} size="lg" />
                 <div>
-                  <h4 className="text-base font-bold text-[#F5F5F1]">{selectedDonorDetail.fullName}</h4>
-                  <p className="text-xs text-[#9E9A97] font-mono">{selectedDonorDetail.donorId}</p>
+                  <h4 className="text-base font-bold text-zinc-900 dark:text-[#F5F5F1]">{selectedDonorDetail.fullName}</h4>
+                  <p className="text-xs text-zinc-500 dark:text-[#9E9A97] font-mono">{selectedDonorDetail.donorId}</p>
                 </div>
               </div>
               <StatusBadge status={selectedDonorDetail.status} />
             </div>
 
-            <div className="grid grid-cols-2 gap-4 text-xs">
-              <div className="p-3 rounded-xl bg-[#141212] border border-white/5 space-y-1">
-                <span className="text-[#9E9A97]">Age & Gender</span>
-                <p className="text-sm font-semibold text-[#F5F5F1]">
-                  {selectedDonorDetail.age} years • {selectedDonorDetail.gender}
+            <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200/80 dark:border-white/5 space-y-1">
+                <span className="text-zinc-500 dark:text-[#9E9A97]">Demographics</span>
+                <p className="text-sm font-bold text-zinc-900 dark:text-[#F5F5F1]">
+                  {selectedDonorDetail.age} yrs • {selectedDonorDetail.gender}
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#141212] border border-white/5 space-y-1">
-                <span className="text-[#9E9A97]">Contact Number</span>
-                <p className="text-sm font-semibold text-[#F5F5F1] flex items-center">
+              <div className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200/80 dark:border-white/5 space-y-1">
+                <span className="text-zinc-500 dark:text-[#9E9A97]">Phone Contact</span>
+                <p className="text-sm font-bold text-zinc-900 dark:text-[#F5F5F1] flex items-center">
                   <Phone className="h-3.5 w-3.5 mr-1 text-[#E50914]" />
                   {selectedDonorDetail.contactNumber}
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#141212] border border-white/5 space-y-1">
-                <span className="text-[#9E9A97]">Email</span>
-                <p className="text-sm font-semibold text-[#F5F5F1] flex items-center truncate">
+              <div className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200/80 dark:border-white/5 space-y-1">
+                <span className="text-zinc-500 dark:text-[#9E9A97]">Email</span>
+                <p className="text-sm font-bold text-zinc-900 dark:text-[#F5F5F1] flex items-center truncate">
                   <Mail className="h-3.5 w-3.5 mr-1 text-[#E50914]" />
                   {selectedDonorDetail.email || "Not specified"}
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#141212] border border-white/5 space-y-1">
-                <span className="text-[#9E9A97]">Location</span>
-                <p className="text-sm font-semibold text-[#F5F5F1] flex items-center">
+              <div className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200/80 dark:border-white/5 space-y-1">
+                <span className="text-zinc-500 dark:text-[#9E9A97]">Location</span>
+                <p className="text-sm font-bold text-zinc-900 dark:text-[#F5F5F1] flex items-center">
                   <MapPin className="h-3.5 w-3.5 mr-1 text-[#E50914]" />
                   {selectedDonorDetail.city}
                 </p>
@@ -890,13 +890,13 @@ export default function DonorsPage() {
 
             {/* Donation History Section */}
             <div>
-              <h5 className="text-xs font-bold uppercase text-[#9E9A97] tracking-wider mb-2 flex items-center">
+              <h5 className="text-xs font-bold uppercase text-zinc-600 dark:text-[#9E9A97] tracking-wider mb-2 flex items-center">
                 <HeartHandshake className="h-3.5 w-3.5 mr-1.5 text-[#E50914]" />
                 Donation Sessions ({selectedDonorDetail.donations?.length || 0})
               </h5>
 
               {!selectedDonorDetail.donations || selectedDonorDetail.donations.length === 0 ? (
-                <p className="text-xs text-[#9E9A97] p-3 rounded-xl bg-[#141212] border border-white/5">
+                <p className="text-xs text-zinc-500 dark:text-[#9E9A97] p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200/80 dark:border-white/5">
                   No recorded donations found for this donor yet.
                 </p>
               ) : (
@@ -904,16 +904,16 @@ export default function DonorsPage() {
                   {selectedDonorDetail.donations.map((don) => (
                     <div
                       key={don._id}
-                      className="p-3 rounded-xl bg-[#141212] border border-white/5 flex items-center justify-between text-xs"
+                      className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200/80 dark:border-white/5 flex items-center justify-between text-xs"
                     >
                       <div>
-                        <span className="font-semibold text-[#F5F5F1]">{don.collectionCenter}</span>
-                        <div className="text-[11px] text-[#9E9A97] mt-0.5">
-                          ID: {don.donationId} • {don.unitsDonated} unit
+                        <span className="font-bold text-zinc-900 dark:text-[#F5F5F1]">{don.collectionCenter}</span>
+                        <div className="text-[11px] text-zinc-500 dark:text-[#9E9A97] mt-0.5">
+                          ID: {don.donationId} • {don.unitsDonated} unit(s)
                         </div>
                       </div>
                       <div className="flex flex-col items-end">
-                        <span className="text-[#9E9A97]">
+                        <span className="text-zinc-500 dark:text-[#9E9A97]">
                           {new Date(don.donationDate).toLocaleDateString()}
                         </span>
                         <StatusBadge status={don.status} />
@@ -924,11 +924,11 @@ export default function DonorsPage() {
               )}
             </div>
 
-            <div className="pt-2 border-t border-white/10 flex justify-end">
+            <div className="pt-2 border-t border-zinc-200 dark:border-white/10 flex justify-end">
               <button
                 type="button"
                 onClick={() => setIsDetailOpen(false)}
-                className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-xs text-[#F5F5F1]"
+                className="px-4 py-2 rounded-xl bg-zinc-100 hover:bg-zinc-200 dark:bg-white/10 dark:hover:bg-white/15 text-xs font-bold text-zinc-800 dark:text-[#F5F5F1]"
               >
                 Close
               </button>
@@ -947,26 +947,26 @@ export default function DonorsPage() {
       >
         <div className="space-y-4">
           {actionError && (
-            <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-xs">
+            <div className="p-3 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-300 dark:border-red-500/40 text-red-800 dark:text-red-300 text-xs font-medium">
               {actionError}
             </div>
           )}
 
-          <p className="text-xs text-[#F5F5F1]">
+          <p className="text-xs text-zinc-800 dark:text-[#F5F5F1]">
             Are you sure you want to delete donor{" "}
             <span className="font-bold text-[#E50914]">{selectedDonor?.fullName}</span> (
             {selectedDonor?.donorId})?
           </p>
 
-          <p className="text-[11px] text-[#9E9A97]">
+          <p className="text-[11px] text-zinc-500 dark:text-[#9E9A97] leading-relaxed">
             Referential safety rule: If this donor has prior donation records in the system, deletion will be blocked to maintain medical history integrity.
           </p>
 
-          <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsDeleteOpen(false)}
-              className="px-4 py-2 rounded-xl bg-[#141212] border border-white/10 text-xs text-[#9E9A97] hover:text-white"
+              className="px-4 py-2 rounded-xl text-xs font-semibold text-zinc-600 hover:text-zinc-900 dark:text-[#9E9A97] dark:hover:text-white"
             >
               Cancel
             </button>
@@ -974,7 +974,7 @@ export default function DonorsPage() {
               type="button"
               disabled={submitting}
               onClick={handleDeleteSubmit}
-              className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-xs font-semibold text-white shadow-lg shadow-red-900/40 disabled:opacity-50"
+              className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-xs font-bold text-white shadow-lg shadow-red-900/40 disabled:opacity-50"
             >
               {submitting ? "Deleting..." : "Confirm Delete"}
             </button>

@@ -342,23 +342,23 @@ export default function RequestsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8 space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-white/10 pb-6">
         <div>
-          <div className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-[#E50914] mb-1">
+          <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#E50914] mb-1">
             <GitPullRequest className="h-4 w-4" />
             <span>Hospital Requisitions</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-[#F5F5F1] tracking-tight">
+          <h1 className="text-3xl font-black text-zinc-900 dark:text-[#F5F5F1] tracking-tight">
             Blood Request Management
           </h1>
-          <p className="text-sm text-[#9E9A97] mt-1">
+          <p className="text-sm text-zinc-500 dark:text-[#9E9A97] mt-1">
             Manage hospital requisition orders, check inventory stock, and issue blood units.
           </p>
         </div>
 
         <button
           onClick={openCreateModal}
-          className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-[#E50914] hover:bg-[#B81D24] text-white text-sm font-semibold shadow-lg shadow-red-900/40 transition-all hover:scale-105"
+          className="inline-flex items-center space-x-2 px-5 py-3 rounded-2xl bg-[#E50914] hover:bg-[#B81D24] text-white text-sm font-bold shadow-lg shadow-red-900/30 transition-all hover:scale-105"
         >
           <Plus className="h-4 w-4" />
           <span>New Blood Requisition</span>
@@ -367,76 +367,82 @@ export default function RequestsPage() {
 
       {/* Action Alerts */}
       {actionSuccess && (
-        <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-sm flex items-center justify-between animate-in fade-in">
+        <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-sm flex items-center justify-between shadow-sm animate-in fade-in">
           <span>{actionSuccess}</span>
-          <button onClick={() => setActionSuccess(null)} className="text-emerald-400 hover:text-white">
+          <button onClick={() => setActionSuccess(null)} className="text-emerald-500 hover:text-emerald-700 dark:hover:text-white">
             &times;
           </button>
         </div>
       )}
       {actionError && !isCreateOpen && !isEditOpen && !isDetailOpen && !isFulfillOpen && !isDeleteOpen && (
-        <div className="p-4 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-sm flex items-center justify-between animate-in fade-in">
+        <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-sm flex items-center justify-between shadow-sm animate-in fade-in">
           <div className="flex items-center space-x-2">
             <AlertCircle className="h-4 w-4 text-[#E50914]" />
             <span>{actionError}</span>
           </div>
-          <button onClick={() => setActionError(null)} className="text-red-400 hover:text-white">
+          <button onClick={() => setActionError(null)} className="text-red-500 hover:text-red-700 dark:hover:text-white">
             &times;
           </button>
         </div>
       )}
 
       {/* Status Counters */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-        <div className="p-4 rounded-xl bg-[#221F1F]/80 border border-white/10 flex items-center justify-between">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="p-5 rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 flex items-center justify-between shadow-lg">
           <div>
-            <span className="text-xs text-[#9E9A97] uppercase">Pending Review</span>
-            <div className="text-2xl font-bold text-[#F5F5F1]">{stats.pendingCount}</div>
+            <span className="text-[11px] font-bold tracking-wider text-zinc-500 dark:text-[#9E9A97] uppercase">Pending Review</span>
+            <div className="text-3xl font-black text-zinc-900 dark:text-[#F5F5F1] mt-1">{stats.pendingCount}</div>
           </div>
-          <Clock className="h-8 w-8 text-amber-400 opacity-60" />
+          <div className="h-12 w-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center">
+            <Clock className="h-6 w-6 text-amber-500" />
+          </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#221F1F]/80 border border-white/10 flex items-center justify-between">
+        <div className="p-5 rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 flex items-center justify-between shadow-lg">
           <div>
-            <span className="text-xs text-[#9E9A97] uppercase">Critical Urgency</span>
-            <div className="text-2xl font-bold text-[#E50914]">{stats.criticalCount}</div>
+            <span className="text-[11px] font-bold tracking-wider text-zinc-500 dark:text-[#9E9A97] uppercase">Critical Urgency</span>
+            <div className="text-3xl font-black text-[#E50914] mt-1">{stats.criticalCount}</div>
           </div>
-          <ShieldAlert className="h-8 w-8 text-[#E50914] opacity-60" />
+          <div className="h-12 w-12 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center">
+            <ShieldAlert className="h-6 w-6 text-[#E50914]" />
+          </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#221F1F]/80 border border-white/10 flex items-center justify-between">
+        <div className="p-5 rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 flex items-center justify-between shadow-lg">
           <div>
-            <span className="text-xs text-[#9E9A97] uppercase">Dispatched / Fulfilled</span>
-            <div className="text-2xl font-bold text-emerald-400">{stats.fulfilledCount}</div>
+            <span className="text-[11px] font-bold tracking-wider text-zinc-500 dark:text-[#9E9A97] uppercase">Dispatched / Fulfilled</span>
+            <div className="text-3xl font-black text-emerald-600 dark:text-emerald-400 mt-1">{stats.fulfilledCount}</div>
           </div>
-          <CheckCircle className="h-8 w-8 text-emerald-400 opacity-60" />
+          <div className="h-12 w-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+            <CheckCircle className="h-6 w-6 text-emerald-500" />
+          </div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="rounded-2xl bg-[#221F1F]/80 border border-white/10 p-4">
+      <div className="rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 p-4 shadow-lg">
         <div className="flex flex-col md:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#9E9A97]" />
+            <Search className="absolute left-3.5 top-3.5 h-4 w-4 text-zinc-400 dark:text-[#9E9A97]" />
             <input
               type="text"
               placeholder="Search by hospital, patient name, ID (e.g. REQ-3001), or phone..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-xl bg-[#1A1717] border border-white/10 pl-10 pr-4 py-2 text-sm text-[#F5F5F1] placeholder-[#9E9A97] focus:outline-none focus:border-[#E50914] transition-colors"
+              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 pl-10 pr-4 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] placeholder-zinc-400 dark:placeholder-[#9E9A97] focus:outline-none focus:border-[#E50914] transition-colors"
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2.5">
             <select
               value={filterBloodGroup}
               onChange={(e) => setFilterBloodGroup(e.target.value)}
-              className="rounded-xl bg-[#1A1717] border border-white/10 px-3 py-2 text-xs text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             >
               <option value="">All Blood Groups</option>
               {BLOOD_GROUPS.map((bg) => (
                 <option key={bg} value={bg}>
-                  {bg}
+                  Group: {bg}
                 </option>
               ))}
             </select>
@@ -444,12 +450,12 @@ export default function RequestsPage() {
             <select
               value={filterUrgency}
               onChange={(e) => setFilterUrgency(e.target.value)}
-              className="rounded-xl bg-[#1A1717] border border-white/10 px-3 py-2 text-xs text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             >
               <option value="">All Urgencies</option>
               {REQUEST_URGENCIES.map((u) => (
                 <option key={u} value={u}>
-                  {u}
+                  Urgency: {u}
                 </option>
               ))}
             </select>
@@ -457,12 +463,12 @@ export default function RequestsPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="rounded-xl bg-[#1A1717] border border-white/10 px-3 py-2 text-xs text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             >
               <option value="">All Statuses</option>
               {REQUEST_STATUSES.map((st) => (
                 <option key={st} value={st}>
-                  {st}
+                  Status: {st}
                 </option>
               ))}
             </select>
@@ -476,7 +482,7 @@ export default function RequestsPage() {
                   setFilterUrgency("");
                   setFilterStatus("");
                 }}
-                className="px-3 py-2 rounded-xl text-xs text-[#9E9A97] hover:text-[#F5F5F1]"
+                className="px-3 py-2.5 rounded-2xl text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:text-[#9E9A97] dark:hover:text-[#F5F5F1] transition-colors"
               >
                 Reset
               </button>
@@ -486,10 +492,10 @@ export default function RequestsPage() {
       </div>
 
       {/* Requests Data Table */}
-      <div className="rounded-2xl bg-[#221F1F]/80 border border-white/10 overflow-hidden shadow-xl">
+      <div className="rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-[#F5F5F1]">
-            <thead className="bg-[#1A1717] text-xs font-semibold text-[#9E9A97] uppercase tracking-wider border-b border-white/10">
+          <table className="w-full text-left text-sm text-zinc-800 dark:text-[#F5F5F1]">
+            <thead className="bg-zinc-100/90 dark:bg-[#1A1717] text-[11px] font-bold text-zinc-500 dark:text-[#9E9A97] uppercase tracking-wider border-b border-zinc-200 dark:border-white/10">
               <tr>
                 <th className="px-6 py-4">Request ID</th>
                 <th className="px-6 py-4">Requester / Hospital</th>
@@ -501,21 +507,21 @@ export default function RequestsPage() {
                 <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-zinc-200/80 dark:divide-white/5">
               {loading ? (
                 <tr>
-                  <td colSpan={8} className="py-12 text-center text-[#9E9A97]">
+                  <td colSpan={8} className="py-16 text-center text-zinc-500 dark:text-[#9E9A97]">
                     <div className="flex items-center justify-center space-x-2">
                       <RefreshCw className="h-5 w-5 animate-spin text-[#E50914]" />
-                      <span>Retrieving requisitions from MongoDB...</span>
+                      <span className="font-medium">Retrieving requisitions from MongoDB...</span>
                     </div>
                   </td>
                 </tr>
               ) : requests.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="py-12 text-center text-[#9E9A97]">
-                    <p className="text-base font-semibold text-[#F5F5F1]">No blood requests found</p>
-                    <p className="text-xs text-[#9E9A97] mt-1">
+                  <td colSpan={8} className="py-16 text-center text-zinc-500 dark:text-[#9E9A97]">
+                    <p className="text-base font-bold text-zinc-900 dark:text-[#F5F5F1]">No blood requests found</p>
+                    <p className="text-xs text-zinc-500 dark:text-[#9E9A97] mt-1">
                       {search || filterBloodGroup || filterUrgency || filterStatus
                         ? "Try clearing filters to display all requisitions."
                         : "Submit a new blood requisition using the button above."}
@@ -524,15 +530,15 @@ export default function RequestsPage() {
                 </tr>
               ) : (
                 requests.map((item) => (
-                  <tr key={item._id} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="px-6 py-4 font-mono font-medium text-[#E50914]">
+                  <tr key={item._id} className="hover:bg-zinc-100/50 dark:hover:bg-white/[0.02] transition-colors">
+                    <td className="px-6 py-4 font-mono font-bold text-[#E50914]">
                       {item.requestId}
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex flex-col">
-                        <span className="font-semibold text-[#F5F5F1]">{item.patientOrHospitalName}</span>
-                        <span className="text-xs text-[#9E9A97] flex items-center mt-0.5">
-                          <Phone className="h-3 w-3 mr-1 text-zinc-500" />
+                        <span className="font-bold text-zinc-900 dark:text-[#F5F5F1]">{item.patientOrHospitalName}</span>
+                        <span className="text-xs text-zinc-500 dark:text-[#9E9A97] flex items-center mt-0.5">
+                          <Phone className="h-3 w-3 mr-1 text-zinc-400 dark:text-zinc-500" />
                           {item.contactNumber}
                         </span>
                       </div>
@@ -541,17 +547,17 @@ export default function RequestsPage() {
                       <BloodGroupBadge bloodGroup={item.bloodGroup} />
                     </td>
                     <td className="px-6 py-4">
-                      <span className="font-bold text-[#F5F5F1]">
+                      <span className="font-bold text-zinc-900 dark:text-[#F5F5F1]">
                         {item.allocatedUnits} / {item.unitsRequested}
                       </span>
-                      <span className="text-xs text-[#9E9A97] ml-1">units</span>
+                      <span className="text-xs text-zinc-500 dark:text-[#9E9A97] ml-1">units</span>
                     </td>
                     <td className="px-6 py-4">
                       <StatusBadge status={item.urgency} />
                     </td>
-                    <td className="px-6 py-4 text-xs text-[#9E9A97]">
-                      <div className="flex items-center space-x-1">
-                        <Calendar className="h-3.5 w-3.5 text-zinc-500" />
+                    <td className="px-6 py-4 text-xs text-zinc-600 dark:text-[#9E9A97]">
+                      <div className="flex items-center space-x-1.5">
+                        <Calendar className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-500" />
                         <span>{new Date(item.requiredByDate).toLocaleDateString()}</span>
                       </div>
                     </td>
@@ -562,7 +568,7 @@ export default function RequestsPage() {
                       <div className="flex items-center justify-end space-x-1.5">
                         <button
                           onClick={() => openDetailModal(item)}
-                          className="p-1.5 rounded-lg text-[#9E9A97] hover:text-[#F5F5F1] hover:bg-white/5 transition-colors"
+                          className="p-2 rounded-xl text-zinc-600 hover:text-zinc-900 dark:text-[#9E9A97] dark:hover:text-[#F5F5F1] hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors"
                           title="View Requisition Details"
                         >
                           <Eye className="h-4 w-4" />
@@ -570,23 +576,23 @@ export default function RequestsPage() {
                         {item.status !== "Fulfilled" && item.status !== "Cancelled" && (
                           <button
                             onClick={() => openFulfillModal(item)}
-                            className="px-2.5 py-1 rounded-lg bg-[#E50914]/15 hover:bg-[#E50914] text-[#E50914] hover:text-white border border-[#E50914]/30 text-xs font-semibold transition-colors flex items-center space-x-1"
+                            className="px-3 py-1.5 rounded-xl bg-[#E50914]/15 hover:bg-[#E50914] text-[#E50914] hover:text-white border border-[#E50914]/30 text-xs font-bold transition-all shadow-sm flex items-center space-x-1"
                             title="Issue Blood Stock from Inventory"
                           >
-                            <Droplet className="h-3 w-3" />
+                            <Droplet className="h-3.5 w-3.5" />
                             <span>Issue Stock</span>
                           </button>
                         )}
                         <button
                           onClick={() => openEditModal(item)}
-                          className="p-1.5 rounded-lg text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 transition-colors"
+                          className="p-2 rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-500/10 transition-colors"
                           title="Edit Request"
                         >
                           <Edit2 className="h-4 w-4" />
                         </button>
                         <button
                           onClick={() => openDeleteModal(item)}
-                          className="p-1.5 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
+                          className="p-2 rounded-xl text-red-600 dark:text-red-400 hover:bg-red-500/10 transition-colors"
                           title="Delete Request"
                         >
                           <Trash2 className="h-4 w-4" />
@@ -611,14 +617,14 @@ export default function RequestsPage() {
       >
         <form onSubmit={handleCreateSubmit} className="space-y-4">
           {actionError && (
-            <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-xs">
+            <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-xs">
               {actionError}
             </div>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Hospital or Patient Name <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -627,12 +633,12 @@ export default function RequestsPage() {
                 value={formData.patientOrHospitalName}
                 onChange={(e) => setFormData({ ...formData, patientOrHospitalName: e.target.value })}
                 placeholder="e.g. City General Hospital - ICU"
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Contact Number <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -641,18 +647,18 @@ export default function RequestsPage() {
                 value={formData.contactNumber}
                 onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
                 placeholder="+91 22 2456 7890"
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Blood Group <span className="text-[#E50914]">*</span>
               </label>
               <select
                 value={formData.bloodGroup}
                 onChange={(e) => setFormData({ ...formData, bloodGroup: e.target.value as BloodGroup })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 {BLOOD_GROUPS.map((bg) => (
                   <option key={bg} value={bg}>
@@ -663,7 +669,7 @@ export default function RequestsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Units Requested <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -672,18 +678,18 @@ export default function RequestsPage() {
                 min={1}
                 value={formData.unitsRequested}
                 onChange={(e) => setFormData({ ...formData, unitsRequested: parseInt(e.target.value, 10) || 1 })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Urgency Level
               </label>
               <select
                 value={formData.urgency}
                 onChange={(e) => setFormData({ ...formData, urgency: e.target.value as RequestUrgency })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 {REQUEST_URGENCIES.map((u) => (
                   <option key={u} value={u}>
@@ -694,7 +700,7 @@ export default function RequestsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Required By Date <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -702,34 +708,34 @@ export default function RequestsPage() {
                 required
                 value={formData.requiredByDate}
                 onChange={(e) => setFormData({ ...formData, requiredByDate: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#9E9A97] mb-1">Clinical Notes</label>
+            <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Clinical Notes</label>
             <textarea
               rows={2}
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="e.g. Emergency trauma surgery or scheduled procedure details"
-              className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             />
           </div>
 
-          <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsCreateOpen(false)}
-              className="px-4 py-2 rounded-xl bg-[#141212] border border-white/10 text-xs text-[#9E9A97] hover:text-white"
+              className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 rounded-xl bg-[#E50914] hover:bg-[#B81D24] text-xs font-semibold text-white shadow-lg shadow-red-900/40 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-2xl bg-[#E50914] hover:bg-[#B81D24] text-xs font-bold text-white shadow-lg shadow-red-900/30 disabled:opacity-50"
             >
               {submitting ? "Submitting..." : "Submit Requisition"}
             </button>
@@ -747,51 +753,51 @@ export default function RequestsPage() {
       >
         <form onSubmit={handleEditSubmit} className="space-y-4">
           {actionError && (
-            <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-xs">
+            <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-xs">
               {actionError}
             </div>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Requester / Hospital</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Requester / Hospital</label>
               <input
                 type="text"
                 required
                 value={formData.patientOrHospitalName}
                 onChange={(e) => setFormData({ ...formData, patientOrHospitalName: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Contact Number</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Contact Number</label>
               <input
                 type="text"
                 required
                 value={formData.contactNumber}
                 onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Units Requested</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Units Requested</label>
               <input
                 type="number"
                 min={1}
                 value={formData.unitsRequested}
                 onChange={(e) => setFormData({ ...formData, unitsRequested: parseInt(e.target.value, 10) || 1 })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Status</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Status</label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as RequestStatus })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 {REQUEST_STATUSES.map((st) => (
                   <option key={st} value={st}>
@@ -803,27 +809,27 @@ export default function RequestsPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#9E9A97] mb-1">Notes</label>
+            <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Notes</label>
             <textarea
               rows={2}
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-              className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             />
           </div>
 
-          <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsEditOpen(false)}
-              className="px-4 py-2 rounded-xl bg-[#141212] border border-white/10 text-xs text-[#9E9A97] hover:text-white"
+              className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 rounded-xl bg-[#E50914] hover:bg-[#B81D24] text-xs font-semibold text-white shadow-lg shadow-red-900/40 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-2xl bg-[#E50914] hover:bg-[#B81D24] text-xs font-bold text-white shadow-lg shadow-red-900/30 disabled:opacity-50"
             >
               {submitting ? "Updating..." : "Save Changes"}
             </button>
@@ -842,32 +848,32 @@ export default function RequestsPage() {
         {selectedReq && (
           <form onSubmit={handleFulfillSubmit} className="space-y-4">
             {actionError && (
-              <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-xs">
+              <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-xs">
                 {actionError}
               </div>
             )}
 
-            <div className="p-4 rounded-xl bg-[#141212] border border-white/10 space-y-2 text-xs">
+            <div className="p-4 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 space-y-2.5 text-xs">
               <div className="flex items-center justify-between">
-                <span className="text-[#9E9A97]">Target Blood Group:</span>
+                <span className="text-zinc-600 dark:text-[#9E9A97]">Target Blood Group:</span>
                 <BloodGroupBadge bloodGroup={selectedReq.bloodGroup} />
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[#9E9A97]">Requisition Target:</span>
-                <span className="font-bold text-[#F5F5F1]">
+                <span className="text-zinc-600 dark:text-[#9E9A97]">Requisition Target:</span>
+                <span className="font-bold text-zinc-900 dark:text-[#F5F5F1]">
                   {selectedReq.allocatedUnits} of {selectedReq.unitsRequested} units fulfilled
                 </span>
               </div>
-              <div className="flex items-center justify-between pt-2 border-t border-white/5">
-                <span className="text-[#9E9A97]">Available in Cold Storage:</span>
-                <span className="font-bold text-emerald-400">
+              <div className="flex items-center justify-between pt-2.5 border-t border-zinc-200 dark:border-white/5">
+                <span className="text-zinc-600 dark:text-[#9E9A97]">Available in Cold Storage:</span>
+                <span className="font-bold text-emerald-600 dark:text-emerald-400">
                   {selectedReq.availableUnitsInStock ?? "Checking..."} unit(s) ready
                 </span>
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Units to Issue in this Batch
               </label>
               <input
@@ -877,25 +883,25 @@ export default function RequestsPage() {
                 max={selectedReq.unitsRequested - selectedReq.allocatedUnits}
                 value={fulfillUnitsInput}
                 onChange={(e) => setFulfillUnitsInput(parseInt(e.target.value, 10) || 1)}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
-              <p className="text-[11px] text-[#9E9A97] mt-1">
+              <p className="text-[11px] text-zinc-500 dark:text-[#9E9A97] mt-1.5">
                 Inventory will automatically decrement the oldest unexpired batches first.
               </p>
             </div>
 
-            <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
+            <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
               <button
                 type="button"
                 onClick={() => setIsFulfillOpen(false)}
-                className="px-4 py-2 rounded-xl bg-[#141212] border border-white/10 text-xs text-[#9E9A97] hover:text-white"
+                className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={submitting}
-                className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-xs font-semibold text-white shadow-lg shadow-emerald-900/40 disabled:opacity-50"
+                className="px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-xs font-bold text-white shadow-lg shadow-emerald-900/30 disabled:opacity-50"
               >
                 {submitting ? "Issuing..." : "Confirm Stock Issuance"}
               </button>
@@ -914,57 +920,57 @@ export default function RequestsPage() {
       >
         {selectedReq && (
           <div className="space-y-4 text-xs">
-            <div className="flex items-center justify-between p-4 rounded-xl bg-[#141212] border border-white/10">
+            <div className="flex items-center justify-between p-4 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10">
               <div>
                 <span className="font-mono text-sm font-bold text-[#E50914]">{selectedReq.requestId}</span>
-                <h4 className="text-sm font-semibold text-[#F5F5F1] mt-0.5">{selectedReq.patientOrHospitalName}</h4>
+                <h4 className="text-sm font-bold text-zinc-900 dark:text-[#F5F5F1] mt-0.5">{selectedReq.patientOrHospitalName}</h4>
               </div>
-              <div className="flex flex-col items-end space-y-1">
+              <div className="flex flex-col items-end space-y-1.5">
                 <StatusBadge status={selectedReq.status} />
                 <StatusBadge status={selectedReq.urgency} />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              <div className="p-3 rounded-xl bg-[#141212] border border-white/5 space-y-1">
-                <span className="text-[#9E9A97]">Target Blood Group</span>
+              <div className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/5 space-y-1">
+                <span className="text-zinc-500 dark:text-[#9E9A97]">Target Blood Group</span>
                 <div>
                   <BloodGroupBadge bloodGroup={selectedReq.bloodGroup} />
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#141212] border border-white/5 space-y-1">
-                <span className="text-[#9E9A97]">Units Allocated</span>
-                <p className="text-sm font-bold text-[#F5F5F1]">
+              <div className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/5 space-y-1">
+                <span className="text-zinc-500 dark:text-[#9E9A97]">Units Allocated</span>
+                <p className="text-sm font-bold text-zinc-900 dark:text-[#F5F5F1]">
                   {selectedReq.allocatedUnits} / {selectedReq.unitsRequested} units
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#141212] border border-white/5 space-y-1">
-                <span className="text-[#9E9A97]">Contact Phone</span>
-                <p className="text-sm font-semibold text-[#F5F5F1]">{selectedReq.contactNumber}</p>
+              <div className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/5 space-y-1">
+                <span className="text-zinc-500 dark:text-[#9E9A97]">Contact Phone</span>
+                <p className="text-sm font-bold text-zinc-900 dark:text-[#F5F5F1]">{selectedReq.contactNumber}</p>
               </div>
 
-              <div className="p-3 rounded-xl bg-[#141212] border border-white/5 space-y-1">
-                <span className="text-[#9E9A97]">Required By</span>
-                <p className="text-sm font-semibold text-[#F5F5F1]">
+              <div className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/5 space-y-1">
+                <span className="text-zinc-500 dark:text-[#9E9A97]">Required By</span>
+                <p className="text-sm font-bold text-zinc-900 dark:text-[#F5F5F1]">
                   {new Date(selectedReq.requiredByDate).toLocaleDateString()}
                 </p>
               </div>
             </div>
 
             {selectedReq.notes && (
-              <div className="p-3 rounded-xl bg-[#141212] border border-white/5 space-y-1">
-                <span className="text-[#9E9A97]">Clinical Notes</span>
-                <p className="text-sm text-[#F5F5F1]">{selectedReq.notes}</p>
+              <div className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/5 space-y-1">
+                <span className="text-zinc-500 dark:text-[#9E9A97]">Clinical Notes</span>
+                <p className="text-sm text-zinc-900 dark:text-[#F5F5F1]">{selectedReq.notes}</p>
               </div>
             )}
 
-            <div className="pt-2 border-t border-white/10 flex justify-end">
+            <div className="pt-2 border-t border-zinc-200 dark:border-white/10 flex justify-end">
               <button
                 type="button"
                 onClick={() => setIsDetailOpen(false)}
-                className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-xs text-[#F5F5F1]"
+                className="px-4 py-2.5 rounded-2xl bg-zinc-200 dark:bg-white/10 hover:bg-zinc-300 dark:hover:bg-white/15 text-xs font-bold text-zinc-800 dark:text-[#F5F5F1] transition-colors"
               >
                 Close
               </button>
@@ -982,17 +988,17 @@ export default function RequestsPage() {
         maxWidth="sm"
       >
         <div className="space-y-4">
-          <p className="text-xs text-[#F5F5F1]">
+          <p className="text-xs text-zinc-700 dark:text-[#F5F5F1]">
             Are you sure you want to remove request{" "}
             <span className="font-bold text-[#E50914]">{selectedReq?.requestId}</span> from{" "}
             {selectedReq?.patientOrHospitalName}?
           </p>
 
-          <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsDeleteOpen(false)}
-              className="px-4 py-2 rounded-xl bg-[#141212] border border-white/10 text-xs text-[#9E9A97] hover:text-white"
+              className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
             >
               Cancel
             </button>
@@ -1000,7 +1006,7 @@ export default function RequestsPage() {
               type="button"
               disabled={submitting}
               onClick={handleDeleteSubmit}
-              className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-xs font-semibold text-white shadow-lg shadow-red-900/40 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-2xl bg-red-600 hover:bg-red-700 text-xs font-bold text-white shadow-lg shadow-red-900/30 disabled:opacity-50"
             >
               {submitting ? "Deleting..." : "Confirm Delete"}
             </button>

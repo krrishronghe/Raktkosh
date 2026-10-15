@@ -44,23 +44,23 @@ export default function Modal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200">
       <div
-        className={`w-full ${maxWidthClasses[maxWidth]} bg-[#1E1B1B] border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]`}
+        className={`w-full ${maxWidthClasses[maxWidth]} bg-white dark:bg-[#1E1B1B] border border-zinc-200 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] transition-colors`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#252121]/60">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-200 dark:border-white/10 bg-zinc-50/80 dark:bg-[#252121]/60">
           <div>
-            <h3 className="text-lg font-semibold text-[#F5F5F1] tracking-tight">{title}</h3>
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-[#F5F5F1] tracking-tight">{title}</h3>
             {description && (
-              <p className="text-xs text-[#9E9A97] mt-0.5">{description}</p>
+              <p className="text-xs text-zinc-500 dark:text-[#9E9A97] mt-0.5">{description}</p>
             )}
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 text-[#9E9A97] hover:text-[#F5F5F1] rounded-lg hover:bg-white/5 transition-colors"
+            className="p-1.5 text-zinc-400 hover:text-zinc-700 dark:text-[#9E9A97] dark:hover:text-[#F5F5F1] rounded-lg hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors"
           >
             <X className="h-5 w-5" />
           </button>

@@ -287,23 +287,23 @@ export default function DonationsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-8 sm:px-6 lg:px-8 space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-white/10 pb-6">
         <div>
-          <div className="flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-[#E50914] mb-1">
+          <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#E50914] mb-1">
             <HeartHandshake className="h-4 w-4" />
             <span>Donation Log</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-[#F5F5F1] tracking-tight">
+          <h1 className="text-3xl font-black text-zinc-900 dark:text-[#F5F5F1] tracking-tight">
             Donation Records
           </h1>
-          <p className="text-sm text-[#9E9A97] mt-1">
+          <p className="text-sm text-zinc-500 dark:text-[#9E9A97] mt-1">
             Audit history of blood donation sessions linked directly to registered donors.
           </p>
         </div>
 
         <button
           onClick={openRecordModal}
-          className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-[#E50914] hover:bg-[#B81D24] text-white text-sm font-semibold shadow-lg shadow-red-900/40 transition-all hover:scale-105"
+          className="inline-flex items-center space-x-2 px-5 py-3 rounded-2xl bg-[#E50914] hover:bg-[#B81D24] text-white text-sm font-bold shadow-lg shadow-red-900/30 transition-all hover:scale-105"
         >
           <Plus className="h-4 w-4" />
           <span>Record New Donation</span>
@@ -312,49 +312,49 @@ export default function DonationsPage() {
 
       {/* Action Alerts */}
       {actionSuccess && (
-        <div className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-sm flex items-center justify-between animate-in fade-in">
+        <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-sm flex items-center justify-between shadow-sm animate-in fade-in">
           <span>{actionSuccess}</span>
-          <button onClick={() => setActionSuccess(null)} className="text-emerald-400 hover:text-white">
+          <button onClick={() => setActionSuccess(null)} className="text-emerald-500 hover:text-emerald-700 dark:hover:text-white">
             &times;
           </button>
         </div>
       )}
       {actionError && !isRecordOpen && !isEditOpen && !isDetailOpen && !isDeleteOpen && (
-        <div className="p-4 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-sm flex items-center justify-between animate-in fade-in">
+        <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-sm flex items-center justify-between shadow-sm animate-in fade-in">
           <div className="flex items-center space-x-2">
             <AlertCircle className="h-4 w-4 text-[#E50914]" />
             <span>{actionError}</span>
           </div>
-          <button onClick={() => setActionError(null)} className="text-red-400 hover:text-white">
+          <button onClick={() => setActionError(null)} className="text-red-500 hover:text-red-700 dark:hover:text-white">
             &times;
           </button>
         </div>
       )}
 
       {/* Filter and Search Bar */}
-      <div className="rounded-2xl bg-[#221F1F]/80 border border-white/10 p-4">
+      <div className="rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 p-4 shadow-lg">
         <div className="flex flex-col md:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#9E9A97]" />
+            <Search className="absolute left-3.5 top-3.5 h-4 w-4 text-zinc-400 dark:text-[#9E9A97]" />
             <input
               type="text"
               placeholder="Search by donor name, donor ID, donation ID, or center..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-xl bg-[#1A1717] border border-white/10 pl-10 pr-4 py-2 text-sm text-[#F5F5F1] placeholder-[#9E9A97] focus:outline-none focus:border-[#E50914] transition-colors"
+              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 pl-10 pr-4 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] placeholder-zinc-400 dark:placeholder-[#9E9A97] focus:outline-none focus:border-[#E50914] transition-colors"
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2.5">
             <select
               value={filterBloodGroup}
               onChange={(e) => setFilterBloodGroup(e.target.value)}
-              className="rounded-xl bg-[#1A1717] border border-white/10 px-3 py-2 text-xs text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             >
               <option value="">All Blood Groups</option>
               {BLOOD_GROUPS.map((bg) => (
                 <option key={bg} value={bg}>
-                  {bg}
+                  Group: {bg}
                 </option>
               ))}
             </select>
@@ -362,12 +362,12 @@ export default function DonationsPage() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="rounded-xl bg-[#1A1717] border border-white/10 px-3 py-2 text-xs text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="rounded-2xl bg-zinc-50 dark:bg-[#1A1717] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-xs text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             >
               <option value="">All Statuses</option>
               {DONATION_STATUSES.map((st) => (
                 <option key={st} value={st}>
-                  {st}
+                  Status: {st}
                 </option>
               ))}
             </select>
@@ -380,7 +380,7 @@ export default function DonationsPage() {
                   setFilterBloodGroup("");
                   setFilterStatus("");
                 }}
-                className="px-3 py-2 rounded-xl text-xs text-[#9E9A97] hover:text-[#F5F5F1]"
+                className="px-3 py-2.5 rounded-2xl text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:text-[#9E9A97] dark:hover:text-[#F5F5F1] transition-colors"
               >
                 Reset
               </button>
@@ -390,10 +390,10 @@ export default function DonationsPage() {
       </div>
 
       {/* Donation Records Table */}
-      <div className="rounded-2xl bg-[#221F1F]/80 border border-white/10 overflow-hidden shadow-xl">
+      <div className="rounded-3xl glass-panel border border-zinc-200 dark:border-white/10 overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-[#F5F5F1]">
-            <thead className="bg-[#1A1717] text-xs font-semibold text-[#9E9A97] uppercase tracking-wider border-b border-white/10">
+          <table className="w-full text-left text-sm text-zinc-800 dark:text-[#F5F5F1]">
+            <thead className="bg-zinc-100/90 dark:bg-[#1A1717] text-[11px] font-bold text-zinc-500 dark:text-[#9E9A97] uppercase tracking-wider border-b border-zinc-200 dark:border-white/10">
               <tr>
                 <th className="px-6 py-4">Donation ID</th>
                 <th className="px-6 py-4">Donor Name & Code</th>
@@ -405,21 +405,21 @@ export default function DonationsPage() {
                 <th className="px-6 py-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/5">
+            <tbody className="divide-y divide-zinc-200/80 dark:divide-white/5">
               {loading ? (
                 <tr>
-                  <td colSpan={8} className="py-12 text-center text-[#9E9A97]">
+                  <td colSpan={8} className="py-16 text-center text-zinc-500 dark:text-[#9E9A97]">
                     <div className="flex items-center justify-center space-x-2">
                       <RefreshCw className="h-5 w-5 animate-spin text-[#E50914]" />
-                      <span>Loading donation audit logs from MongoDB...</span>
+                      <span className="font-medium">Loading donation audit logs from MongoDB...</span>
                     </div>
                   </td>
                 </tr>
               ) : donations.length === 0 ? (
                 <tr>
-                  <td colSpan={8} className="py-12 text-center text-[#9E9A97]">
-                    <p className="text-base font-semibold text-[#F5F5F1]">No donation records found</p>
-                    <p className="text-xs text-[#9E9A97] mt-1">
+                  <td colSpan={8} className="py-16 text-center text-zinc-500 dark:text-[#9E9A97]">
+                    <p className="text-base font-bold text-zinc-900 dark:text-[#F5F5F1]">No donation records found</p>
+                    <p className="text-xs text-zinc-500 dark:text-[#9E9A97] mt-1">
                       {search || filterBloodGroup || filterStatus
                         ? "Try clearing filters to display all records."
                         : "Record your first blood donation session using the button above."}
@@ -428,31 +428,31 @@ export default function DonationsPage() {
                 </tr>
               ) : (
                 donations.map((item) => (
-                  <tr key={item._id} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="px-6 py-4 font-mono font-medium text-[#E50914]">
+                  <tr key={item._id} className="hover:bg-zinc-100/50 dark:hover:bg-white/[0.02] transition-colors">
+                    <td className="px-6 py-4 font-mono font-bold text-[#E50914]">
                       {item.donationId}
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex flex-col">
-                        <span className="font-semibold text-[#F5F5F1]">{item.donorName}</span>
-                        <span className="text-xs text-[#9E9A97] font-mono">{item.donorCode}</span>
+                        <span className="font-bold text-zinc-900 dark:text-[#F5F5F1]">{item.donorName}</span>
+                        <span className="text-xs text-zinc-500 dark:text-[#9E9A97] font-mono">{item.donorCode}</span>
                       </div>
                     </td>
                     <td className="px-6 py-4">
                       <BloodGroupBadge bloodGroup={item.bloodGroup} />
                     </td>
-                    <td className="px-6 py-4 font-bold text-[#F5F5F1]">
-                      {item.unitsDonated} <span className="text-xs font-normal text-[#9E9A97]">unit(s)</span>
+                    <td className="px-6 py-4 font-bold text-zinc-900 dark:text-[#F5F5F1]">
+                      {item.unitsDonated} <span className="text-xs font-normal text-zinc-500 dark:text-[#9E9A97]">unit(s)</span>
                     </td>
-                    <td className="px-6 py-4 text-xs text-[#9E9A97]">
-                      <div className="flex items-center space-x-1">
-                        <Building2 className="h-3.5 w-3.5 text-zinc-500" />
+                    <td className="px-6 py-4 text-xs text-zinc-600 dark:text-[#9E9A97]">
+                      <div className="flex items-center space-x-1.5">
+                        <Building2 className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-500" />
                         <span>{item.collectionCenter}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-xs text-[#9E9A97]">
-                      <div className="flex items-center space-x-1">
-                        <Calendar className="h-3.5 w-3.5 text-zinc-500" />
+                    <td className="px-6 py-4 text-xs text-zinc-600 dark:text-[#9E9A97]">
+                      <div className="flex items-center space-x-1.5">
+                        <Calendar className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-500" />
                         <span>{new Date(item.donationDate).toLocaleDateString()}</span>
                       </div>
                     </td>
@@ -463,21 +463,21 @@ export default function DonationsPage() {
                       <div className="flex items-center justify-end space-x-1.5">
                         <button
                           onClick={() => openDetailModal(item)}
-                          className="p-1.5 rounded-lg text-[#9E9A97] hover:text-[#F5F5F1] hover:bg-white/5 transition-colors"
+                          className="p-2 rounded-xl text-zinc-600 hover:text-zinc-900 dark:text-[#9E9A97] dark:hover:text-[#F5F5F1] hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors"
                           title="View Details"
                         >
                           <Eye className="h-4 w-4" />
                         </button>
                         <button
                           onClick={() => openEditModal(item)}
-                          className="p-1.5 rounded-lg text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 transition-colors"
+                          className="p-2 rounded-xl text-blue-600 dark:text-blue-400 hover:bg-blue-500/10 transition-colors"
                           title="Edit Record"
                         >
                           <Edit2 className="h-4 w-4" />
                         </button>
                         <button
                           onClick={() => openDeleteModal(item)}
-                          className="p-1.5 rounded-lg text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
+                          className="p-2 rounded-xl text-red-600 dark:text-red-400 hover:bg-red-500/10 transition-colors"
                           title="Delete Record"
                         >
                           <Trash2 className="h-4 w-4" />
@@ -502,19 +502,19 @@ export default function DonationsPage() {
       >
         <form onSubmit={handleRecordSubmit} className="space-y-4">
           {actionError && (
-            <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-xs">
+            <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-xs">
               {actionError}
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+            <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
               Select Registered Donor <span className="text-[#E50914]">*</span>
             </label>
             {loadingDonors ? (
-              <p className="text-xs text-[#9E9A97]">Loading donor registry...</p>
+              <p className="text-xs text-zinc-500 dark:text-[#9E9A97]">Loading donor registry...</p>
             ) : donorsList.length === 0 ? (
-              <p className="text-xs text-amber-400">
+              <p className="text-xs text-amber-500 dark:text-amber-400">
                 No active donors registered. Please register a donor in the Donors module first.
               </p>
             ) : (
@@ -522,7 +522,7 @@ export default function DonationsPage() {
                 required
                 value={formData.donorId}
                 onChange={(e) => setFormData({ ...formData, donorId: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 {donorsList.map((d) => (
                   <option key={d._id} value={d._id}>
@@ -531,14 +531,14 @@ export default function DonationsPage() {
                 ))}
               </select>
             )}
-            <p className="text-[11px] text-[#9E9A97] mt-1">
+            <p className="text-[11px] text-zinc-500 dark:text-[#9E9A97] mt-1.5">
               Blood group and demographics are automatically inherited from the donor profile.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Units Donated <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -548,12 +548,12 @@ export default function DonationsPage() {
                 max={2}
                 value={formData.unitsDonated}
                 onChange={(e) => setFormData({ ...formData, unitsDonated: parseInt(e.target.value, 10) || 1 })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Donation Date <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -561,12 +561,12 @@ export default function DonationsPage() {
                 required
                 value={formData.donationDate}
                 onChange={(e) => setFormData({ ...formData, donationDate: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Collection Center <span className="text-[#E50914]">*</span>
               </label>
               <input
@@ -575,18 +575,18 @@ export default function DonationsPage() {
                 value={formData.collectionCenter}
                 onChange={(e) => setFormData({ ...formData, collectionCenter: e.target.value })}
                 placeholder="e.g. Central Transfusion Center"
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">
                 Screening Status
               </label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as DonationStatus })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 {DONATION_STATUSES.map((st) => (
                   <option key={st} value={st}>
@@ -598,28 +598,28 @@ export default function DonationsPage() {
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#9E9A97] mb-1">Clinical Notes</label>
+            <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Clinical Notes</label>
             <input
               type="text"
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="e.g. Normal blood pressure, no dizziness observed"
-              className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             />
           </div>
 
-          <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsRecordOpen(false)}
-              className="px-4 py-2 rounded-xl bg-[#141212] border border-white/10 text-xs text-[#9E9A97] hover:text-white"
+              className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting || donorsList.length === 0}
-              className="px-5 py-2 rounded-xl bg-[#E50914] hover:bg-[#B81D24] text-xs font-semibold text-white shadow-lg shadow-red-900/40 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-2xl bg-[#E50914] hover:bg-[#B81D24] text-xs font-bold text-white shadow-lg shadow-red-900/30 disabled:opacity-50"
             >
               {submitting ? "Recording..." : "Save Donation Record"}
             </button>
@@ -637,60 +637,60 @@ export default function DonationsPage() {
       >
         <form onSubmit={handleEditSubmit} className="space-y-4">
           {actionError && (
-            <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-xs">
+            <div className="p-3.5 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-300 text-xs">
               {actionError}
             </div>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Donor Name</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Donor Name</label>
               <input
                 type="text"
                 disabled
                 value={selectedDonation?.donorName || ""}
-                className="w-full rounded-xl bg-[#141212] border border-white/5 px-3.5 py-2 text-sm text-[#9E9A97] cursor-not-allowed"
+                className="w-full rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/5 px-3.5 py-2.5 text-sm text-zinc-500 dark:text-[#9E9A97] cursor-not-allowed"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Blood Group</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Blood Group</label>
               <input
                 type="text"
                 disabled
                 value={selectedDonation?.bloodGroup || ""}
-                className="w-full rounded-xl bg-[#141212] border border-white/5 px-3.5 py-2 text-sm text-[#9E9A97] cursor-not-allowed"
+                className="w-full rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/5 px-3.5 py-2.5 text-sm text-zinc-500 dark:text-[#9E9A97] cursor-not-allowed"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Units Donated</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Units Donated</label>
               <input
                 type="number"
                 min={1}
                 value={formData.unitsDonated}
                 onChange={(e) => setFormData({ ...formData, unitsDonated: parseInt(e.target.value, 10) || 1 })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Collection Center</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Collection Center</label>
               <input
                 type="text"
                 required
                 value={formData.collectionCenter}
                 onChange={(e) => setFormData({ ...formData, collectionCenter: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Status</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Status</label>
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value as DonationStatus })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               >
                 {DONATION_STATUSES.map((st) => (
                   <option key={st} value={st}>
@@ -701,39 +701,39 @@ export default function DonationsPage() {
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-[#9E9A97] mb-1">Donation Date</label>
+              <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Donation Date</label>
               <input
                 type="date"
                 required
                 value={formData.donationDate}
                 onChange={(e) => setFormData({ ...formData, donationDate: e.target.value })}
-                className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+                className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-[#9E9A97] mb-1">Notes</label>
+            <label className="block text-xs font-semibold text-zinc-700 dark:text-[#9E9A97] mb-1.5">Notes</label>
             <input
               type="text"
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-              className="w-full rounded-xl bg-[#141212] border border-white/10 px-3.5 py-2 text-sm text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
+              className="w-full rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-[#F5F5F1] focus:outline-none focus:border-[#E50914]"
             />
           </div>
 
-          <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsEditOpen(false)}
-              className="px-4 py-2 rounded-xl bg-[#141212] border border-white/10 text-xs text-[#9E9A97] hover:text-white"
+              className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2 rounded-xl bg-[#E50914] hover:bg-[#B81D24] text-xs font-semibold text-white shadow-lg shadow-red-900/40 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-2xl bg-[#E50914] hover:bg-[#B81D24] text-xs font-bold text-white shadow-lg shadow-red-900/30 disabled:opacity-50"
             >
               {submitting ? "Updating..." : "Save Changes"}
             </button>
@@ -751,46 +751,46 @@ export default function DonationsPage() {
       >
         {selectedDonation && (
           <div className="space-y-4 text-xs">
-            <div className="flex items-center justify-between p-4 rounded-xl bg-[#141212] border border-white/10">
+            <div className="flex items-center justify-between p-4 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10">
               <div>
                 <span className="font-mono text-sm font-bold text-[#E50914]">{selectedDonation.donationId}</span>
-                <h4 className="text-sm font-semibold text-[#F5F5F1] mt-0.5">{selectedDonation.donorName}</h4>
-                <p className="text-[11px] text-[#9E9A97] font-mono">{selectedDonation.donorCode}</p>
+                <h4 className="text-sm font-bold text-zinc-900 dark:text-[#F5F5F1] mt-0.5">{selectedDonation.donorName}</h4>
+                <p className="text-[11px] text-zinc-500 dark:text-[#9E9A97] font-mono">{selectedDonation.donorCode}</p>
               </div>
               <StatusBadge status={selectedDonation.status} />
             </div>
 
-            <div className="space-y-2 p-3 rounded-xl bg-[#141212] border border-white/5">
+            <div className="space-y-2.5 p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/5">
               <div className="flex items-center justify-between">
-                <span className="text-[#9E9A97]">Blood Group:</span>
+                <span className="text-zinc-600 dark:text-[#9E9A97]">Blood Group:</span>
                 <BloodGroupBadge bloodGroup={selectedDonation.bloodGroup} />
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[#9E9A97]">Units Donated:</span>
-                <span className="font-bold text-[#F5F5F1]">{selectedDonation.unitsDonated} unit</span>
+                <span className="text-zinc-600 dark:text-[#9E9A97]">Units Donated:</span>
+                <span className="font-bold text-zinc-900 dark:text-[#F5F5F1]">{selectedDonation.unitsDonated} unit</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[#9E9A97]">Collection Center:</span>
-                <span className="font-semibold text-[#F5F5F1]">{selectedDonation.collectionCenter}</span>
+                <span className="text-zinc-600 dark:text-[#9E9A97]">Collection Center:</span>
+                <span className="font-semibold text-zinc-900 dark:text-[#F5F5F1]">{selectedDonation.collectionCenter}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[#9E9A97]">Donation Date:</span>
-                <span className="text-[#F5F5F1]">{new Date(selectedDonation.donationDate).toLocaleDateString()}</span>
+                <span className="text-zinc-600 dark:text-[#9E9A97]">Donation Date:</span>
+                <span className="text-zinc-900 dark:text-[#F5F5F1] font-medium">{new Date(selectedDonation.donationDate).toLocaleDateString()}</span>
               </div>
             </div>
 
             {selectedDonation.notes && (
-              <div className="p-3 rounded-xl bg-[#141212] border border-white/5 space-y-1">
-                <span className="text-[#9E9A97]">Notes</span>
-                <p className="text-[#F5F5F1]">{selectedDonation.notes}</p>
+              <div className="p-3.5 rounded-2xl bg-zinc-50 dark:bg-[#141212] border border-zinc-200 dark:border-white/5 space-y-1">
+                <span className="text-zinc-500 dark:text-[#9E9A97]">Notes</span>
+                <p className="text-zinc-900 dark:text-[#F5F5F1]">{selectedDonation.notes}</p>
               </div>
             )}
 
-            <div className="pt-2 border-t border-white/10 flex justify-end">
+            <div className="pt-2 border-t border-zinc-200 dark:border-white/10 flex justify-end">
               <button
                 type="button"
                 onClick={() => setIsDetailOpen(false)}
-                className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-xs text-[#F5F5F1]"
+                className="px-4 py-2.5 rounded-2xl bg-zinc-200 dark:bg-white/10 hover:bg-zinc-300 dark:hover:bg-white/15 text-xs font-bold text-zinc-800 dark:text-[#F5F5F1] transition-colors"
               >
                 Close
               </button>
@@ -808,17 +808,17 @@ export default function DonationsPage() {
         maxWidth="sm"
       >
         <div className="space-y-4">
-          <p className="text-xs text-[#F5F5F1]">
+          <p className="text-xs text-zinc-700 dark:text-[#F5F5F1]">
             Are you sure you want to remove donation record{" "}
             <span className="font-bold text-[#E50914]">{selectedDonation?.donationId}</span> for donor{" "}
             {selectedDonation?.donorName}?
           </p>
 
-          <div className="pt-4 border-t border-white/10 flex items-center justify-end space-x-3">
+          <div className="pt-4 border-t border-zinc-200 dark:border-white/10 flex items-center justify-end space-x-3">
             <button
               type="button"
               onClick={() => setIsDeleteOpen(false)}
-              className="px-4 py-2 rounded-xl bg-[#141212] border border-white/10 text-xs text-[#9E9A97] hover:text-white"
+              className="px-4 py-2.5 rounded-2xl bg-zinc-100 dark:bg-[#141212] border border-zinc-200 dark:border-white/10 text-xs font-semibold text-zinc-600 dark:text-[#9E9A97] hover:text-zinc-900 dark:hover:text-white"
             >
               Cancel
             </button>
@@ -826,7 +826,7 @@ export default function DonationsPage() {
               type="button"
               disabled={submitting}
               onClick={handleDeleteSubmit}
-              className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-xs font-semibold text-white shadow-lg shadow-red-900/40 disabled:opacity-50"
+              className="px-5 py-2.5 rounded-2xl bg-red-600 hover:bg-red-700 text-xs font-bold text-white shadow-lg shadow-red-900/30 disabled:opacity-50"
             >
               {submitting ? "Deleting..." : "Confirm Delete"}
             </button>
