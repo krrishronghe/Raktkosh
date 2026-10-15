@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rakt-red: #E50914;
+  --color-rakt-crimson: #B81D24;
+  --color-rakt-canvas: #141212;
+  --color-rakt-obsidian: #221F1F;
+  --color-rakt-surface: #1A1717;
+  --color-rakt-card: #221F1F;
+  --color-rakt-card-hover: #2B2626;
+  --color-rakt-light: #F5F5F1;
+  --color-rakt-muted: #9E9A97;
+  --color-rakt-border: rgba(255, 255, 255, 0.08);
+  --color-rakt-border-glow: rgba(229, 9, 20, 0.25);
+}
+
+:root {
+  --background: #141212;
+  --foreground: #F5F5F1;
+}
+
+body {
+  background-color: #141212;
+  color: #F5F5F1;
+  min-height: 100vh;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar matching dark obsidian theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #141212;
+}
+::-webkit-scrollbar-thumb {
+  background: #2E2929;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B81D24;
+}
+
+/* Glassmorphic card styling inspired by medical dashboard reference */
+.glass-panel {
+  background: rgba(34, 31, 31, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  border-color: rgba(229, 9, 20, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(229, 9, 20, 0.08);
+}
